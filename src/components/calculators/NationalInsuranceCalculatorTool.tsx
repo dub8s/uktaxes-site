@@ -27,7 +27,7 @@ export default function NationalInsuranceCalculatorTool() {
       </div>
 
       <div>
-        <div className="rounded-xl bg-background p-5">
+        <div className="rounded-xl bg-surface p-5">
           <StatRow
             label="National Insurance due"
             value={formatCurrency(result.totalContribution)}

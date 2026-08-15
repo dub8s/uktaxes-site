@@ -4,12 +4,15 @@ import { calculators } from "@/lib/calculators";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border mt-24">
+    <footer className="mt-24 border-t border-border bg-surface">
       <Container className="py-12">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <span className="text-base font-semibold tracking-tight">
-              uktaxes<span className="text-primary">.co.uk</span>
+            <span className="flex items-center gap-2">
+              <span className="flex size-6 items-center justify-center rounded-md bg-primary text-xs font-bold text-primary-foreground">
+                £
+              </span>
+              <span className="text-base font-semibold tracking-tight">uktaxes.co.uk</span>
             </span>
             <p className="mt-3 text-sm text-muted">
               Free UK tax calculators, kept up to date with the latest HMRC

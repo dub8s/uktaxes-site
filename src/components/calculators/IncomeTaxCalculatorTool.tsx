@@ -25,12 +25,12 @@ export default function IncomeTaxCalculatorTool() {
       </div>
 
       <div>
-        <div className="rounded-xl bg-background p-5">
+        <div className="rounded-xl bg-surface p-5">
           <StatRow label="Income Tax due" value={formatCurrency(result.totalTax)} emphasis />
           <StatRow label="Effective tax rate" value={formatPercent(result.effectiveRate)} />
         </div>
 
-        <div className="mt-6 rounded-xl bg-background p-5">
+        <div className="mt-6 rounded-xl bg-surface p-5">
           <StatRow label="Gross income" value={formatCurrency(result.grossIncome)} />
           <StatRow label="Personal Allowance" value={formatCurrency(result.personalAllowance)} />
           <StatRow label="Taxable income" value={formatCurrency(result.taxableIncome)} />

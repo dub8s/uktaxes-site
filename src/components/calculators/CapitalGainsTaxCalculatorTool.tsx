@@ -40,11 +40,11 @@ export default function CapitalGainsTaxCalculatorTool() {
       </div>
 
       <div>
-        <div className="rounded-xl bg-background p-5">
+        <div className="rounded-xl bg-surface p-5">
           <StatRow label="Capital Gains Tax due" value={formatCurrency(result.totalTax)} emphasis />
         </div>
 
-        <div className="mt-6 rounded-xl bg-background p-5">
+        <div className="mt-6 rounded-xl bg-surface p-5">
           <StatRow label="Total gain" value={formatCurrency(result.gain)} />
           <StatRow label="Annual Exempt Amount" value={`− ${formatCurrency(result.annualExemptAmount)}`} />
           <StatRow label="Chargeable gain" value={formatCurrency(result.chargeableGain)} />

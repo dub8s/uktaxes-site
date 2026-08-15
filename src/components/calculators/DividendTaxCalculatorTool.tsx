@@ -58,13 +58,13 @@ export default function DividendTaxCalculatorTool() {
       </div>
 
       <div>
-        <div className="rounded-xl bg-background p-5">
+        <div className="rounded-xl bg-surface p-5">
           <StatRow label="Total tax due" value={formatCurrency(result.totalTax)} emphasis />
           <StatRow label="Income Tax on other income" value={formatCurrency(result.otherIncomeTax)} />
           <StatRow label="Dividend Tax" value={formatCurrency(result.dividendTax)} />
         </div>
 
-        <div className="mt-6 rounded-xl bg-background p-5">
+        <div className="mt-6 rounded-xl bg-surface p-5">
           <StatRow label="Personal Allowance" value={formatCurrency(result.personalAllowance)} />
           <StatRow label="Taxable dividend income" value={formatCurrency(result.taxableDividendIncome)} />
         </div>

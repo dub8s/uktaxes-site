@@ -3,7 +3,7 @@ import { type ReactNode } from "react";
 
 type BaseProps = {
   children: ReactNode;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "dark";
   className?: string;
 };
 
@@ -12,6 +12,7 @@ const styles = {
     "bg-primary text-primary-foreground hover:bg-primary-hover",
   secondary:
     "bg-transparent text-foreground border border-border hover:bg-surface",
+  dark: "bg-accent text-accent-foreground hover:opacity-90",
 };
 
 const base =

@@ -40,7 +40,7 @@ export default function SelfEmployedTaxCalculatorTool() {
       </div>
 
       <div>
-        <div className="rounded-xl bg-background p-5">
+        <div className="rounded-xl bg-surface p-5">
           <StatRow label="Total tax and NI due" value={formatCurrency(result.totalTaxAndNI)} emphasis />
           <StatRow label="Income Tax" value={formatCurrency(result.incomeTax.totalTax)} />
           <StatRow label="Class 4 National Insurance" value={formatCurrency(result.class4.totalContribution)} />

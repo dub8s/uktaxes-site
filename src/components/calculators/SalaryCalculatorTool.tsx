@@ -35,13 +35,13 @@ export default function SalaryCalculatorTool() {
       </div>
 
       <div>
-        <div className="rounded-xl bg-background p-5">
+        <div className="rounded-xl bg-surface p-5">
           <StatRow label="Take-home pay per year" value={formatCurrency(result.netAnnual)} emphasis />
           <StatRow label="Per month" value={formatCurrency(result.netMonthly)} />
           <StatRow label="Per week" value={formatCurrency(result.netWeekly)} />
         </div>
 
-        <div className="mt-6 rounded-xl bg-background p-5">
+        <div className="mt-6 rounded-xl bg-surface p-5">
           <StatRow label="Gross salary" value={formatCurrency(result.grossAnnual)} />
           {result.pensionContribution > 0 && (
             <StatRow label="Pension contribution" value={`− ${formatCurrency(result.pensionContribution)}`} />
