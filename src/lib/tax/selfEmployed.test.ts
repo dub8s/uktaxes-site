@@ -17,6 +17,16 @@ describe("calculateClass4NI", () => {
     expect(result.totalContribution).toBeCloseTo(2_456.6, 2);
     expect(result.bands.map((b) => b.name)).toEqual(["Main rate", "Above Upper Profits Limit"]);
   });
+
+  it("charges nothing at exactly the Lower Profits Limit", () => {
+    expect(calculateClass4NI(12_570).totalContribution).toBe(0);
+  });
+
+  it("stays entirely at the main rate at exactly the Upper Profits Limit", () => {
+    const result = calculateClass4NI(50_270);
+    expect(result.bands.map((b) => b.name)).toEqual(["Main rate"]);
+    expect(result.totalContribution).toBeCloseTo((50_270 - 12_570) * 0.06, 2);
+  });
 });
 
 describe("calculateSelfEmployedTax", () => {
@@ -46,5 +56,18 @@ describe("calculateSelfEmployedTax", () => {
     expect(result.class2VoluntaryAvailable).toBe(false);
     expect(result.class2Paid).toBe(0);
     expect(result.class2CreditedAutomatically).toBe(true);
+  });
+
+  it("treats exactly the Small Profits Threshold as automatically credited, not voluntary", () => {
+    const result = calculateSelfEmployedTax(7_105, { payVoluntaryClass2: true });
+    expect(result.class2VoluntaryAvailable).toBe(false);
+    expect(result.class2CreditedAutomatically).toBe(true);
+    expect(result.class2Paid).toBe(0);
+  });
+
+  it("clamps negative profit to zero", () => {
+    const result = calculateSelfEmployedTax(-5_000);
+    expect(result.profit).toBe(0);
+    expect(result.totalTaxAndNI).toBe(0);
   });
 });

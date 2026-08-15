@@ -35,4 +35,32 @@ describe("calculateDividendTax", () => {
     expect(result.dividendTax).toBeCloseTo(6_971.25, 2);
     expect(result.totalTax).toBeCloseTo(32_403.25, 2);
   });
+
+  it("matches HMRC's own worked example on gov.uk/tax-on-dividends (£29,570 wages + £3,000 dividends, 2026/27)", () => {
+    const result = calculateDividendTax(29_570, 3_000);
+    // HMRC: "20% tax on £17,000 of wages"
+    expect(result.taxableOtherIncome).toBe(17_000);
+    expect(result.otherIncomeTax).toBeCloseTo(3_400, 2);
+    // HMRC: "no tax on £500 of dividends, because of the dividend allowance"
+    expect(result.dividendAllowanceUsed).toBe(500);
+    // HMRC: "10.75% tax on £2,500 of dividends"
+    expect(result.taxableDividendIncome).toBe(2_500);
+    expect(result.dividendTax).toBeCloseTo(268.75, 2);
+  });
+
+  it("gives dividends the full Personal Allowance when there is no other income", () => {
+    const result = calculateDividendTax(0, 15_000);
+    expect(result.taxableOtherIncome).toBe(0);
+    expect(result.otherIncomeTax).toBe(0);
+    // £12,570 Personal Allowance + £500 dividend allowance shelters £13,070
+    expect(result.taxableDividendIncome).toBe(15_000 - 12_570 - 500);
+    expect(result.dividendTax).toBeCloseTo(1_930 * 0.1075, 2);
+  });
+
+  it("clamps negative income to zero", () => {
+    const result = calculateDividendTax(-5_000, -1_000);
+    expect(result.otherIncome).toBe(0);
+    expect(result.dividendIncome).toBe(0);
+    expect(result.totalTax).toBe(0);
+  });
 });

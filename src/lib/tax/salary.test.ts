@@ -23,4 +23,19 @@ describe("calculateTakeHomePay", () => {
     const result = calculateTakeHomePay(30_000, { region: "scotland" });
     expect(result.incomeTax.totalTax).toBeCloseTo(3_451.07, 2);
   });
+
+  it("clamps pension percent to the 0–100 range", () => {
+    const overContributed = calculateTakeHomePay(30_000, { pensionPercent: 150 });
+    expect(overContributed.pensionContribution).toBe(30_000);
+    expect(overContributed.netAnnual).toBe(0);
+
+    const negativeContribution = calculateTakeHomePay(30_000, { pensionPercent: -10 });
+    expect(negativeContribution.pensionContribution).toBe(0);
+  });
+
+  it("clamps negative gross salary to zero", () => {
+    const result = calculateTakeHomePay(-20_000);
+    expect(result.grossAnnual).toBe(0);
+    expect(result.netAnnual).toBe(0);
+  });
 });

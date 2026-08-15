@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "./Container";
 import Card from "./Card";
 import { type Calculator, getRelatedCalculators } from "@/lib/calculators";
+import { getBlogPost } from "@/lib/blog";
 import { RATES_LAST_VERIFIED, TAX_YEAR } from "@/data/tax-rates-2026-27";
 import { calculatorJsonLd } from "@/lib/seo";
 
@@ -14,6 +15,7 @@ export default function CalculatorPage({
   tool?: ReactNode;
 }) {
   const related = getRelatedCalculators(calculator);
+  const explainerPost = calculator.explainerSlug ? getBlogPost(calculator.explainerSlug) : undefined;
 
   return (
     <Container className="py-12 sm:py-16">
@@ -46,7 +48,18 @@ export default function CalculatorPage({
 
       <section className="mt-16 max-w-3xl">
         <h2 className="text-xl font-semibold tracking-tight">How this is calculated</h2>
-        <p className="mt-4 text-muted leading-relaxed">{calculator.explainer}</p>
+        <div className="mt-4 space-y-4 text-muted leading-relaxed">
+          {calculator.explainer.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
+        {explainerPost && (
+          <p className="mt-4 text-sm">
+            <Link href={`/blog/${explainerPost.slug}`} className="text-primary hover:underline">
+              Read more: {explainerPost.title} →
+            </Link>
+          </p>
+        )}
       </section>
 
       <section className="mt-16 max-w-3xl">

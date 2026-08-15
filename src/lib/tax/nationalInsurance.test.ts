@@ -19,4 +19,21 @@ describe("calculateNationalInsurance", () => {
     expect(result.totalContribution).toBeCloseTo(3_210.6, 2);
     expect(result.bands.map((b) => b.name)).toEqual(["Main rate", "Above Upper Earnings Limit"]);
   });
+
+  it("charges nothing at exactly the Primary Threshold", () => {
+    const result = calculateNationalInsurance(12_570);
+    expect(result.totalContribution).toBe(0);
+  });
+
+  it("stays entirely at the main rate at exactly the Upper Earnings Limit", () => {
+    const result = calculateNationalInsurance(50_270);
+    expect(result.bands.map((b) => b.name)).toEqual(["Main rate"]);
+    expect(result.totalContribution).toBeCloseTo((50_270 - 12_570) * 0.08, 2);
+  });
+
+  it("clamps negative earnings to zero", () => {
+    const result = calculateNationalInsurance(-1_000);
+    expect(result.grossIncome).toBe(0);
+    expect(result.totalContribution).toBe(0);
+  });
 });
