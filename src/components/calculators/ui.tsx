@@ -1,7 +1,39 @@
 "use client";
 
+import { useLayoutEffect, useRef, useState } from "react";
 import { type IncomeTaxRegion } from "@/data/tax-rates-2026-27";
 import { formatCurrency, formatPercent } from "@/lib/format";
+
+const thousandsFormatter = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 10 });
+
+/** Formats a plain digit string (optionally with one ".") with thousand separators. */
+function formatWithThousands(digits: string): string {
+  const [intPart, decPart] = digits.split(".");
+  const formattedInt = intPart === "" ? "" : thousandsFormatter.format(Number(intPart));
+  return decPart !== undefined ? `${formattedInt}.${decPart}` : formattedInt;
+}
+
+/** Counts digit/decimal-point characters before `index`, so we can re-find the same spot after reformatting. */
+function countDigitsBefore(str: string, index: number): number {
+  let count = 0;
+  for (let i = 0; i < index && i < str.length; i++) {
+    if (/[0-9.]/.test(str[i])) count++;
+  }
+  return count;
+}
+
+/** Finds the string index just after the nth digit/decimal-point character. */
+function indexAfterDigitCount(str: string, digitCount: number): number {
+  if (digitCount <= 0) return 0;
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (/[0-9.]/.test(str[i])) {
+      count++;
+      if (count === digitCount) return i + 1;
+    }
+  }
+  return str.length;
+}
 
 export function NumberField({
   label,
@@ -9,27 +41,74 @@ export function NumberField({
   onChange,
   prefix,
   suffix,
-  min = 0,
 }: {
   label: string;
   value: number;
   onChange: (value: number) => void;
   prefix?: string;
   suffix?: string;
-  min?: number;
 }) {
+  // Currency fields (with a "£" prefix) get live thousand-separator formatting;
+  // percentage-style fields don't need it.
+  const formatThousands = Boolean(prefix);
+
+  const formatDisplay = (digits: string) => (formatThousands ? formatWithThousands(digits) : digits);
+
+  // Track the raw typed text separately from the numeric value, so an empty
+  // field stays empty instead of snapping back to a displayed "0" that new
+  // keystrokes would get typed after (e.g. producing "023123").
+  const [text, setText] = useState(() => (value === 0 ? "" : formatDisplay(String(value))));
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const pendingCursorRef = useRef<number | null>(null);
+
+  useLayoutEffect(() => {
+    if (pendingCursorRef.current !== null && inputRef.current) {
+      inputRef.current.setSelectionRange(pendingCursorRef.current, pendingCursorRef.current);
+      pendingCursorRef.current = null;
+    }
+  }, [text]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const cursorPos = e.target.selectionStart ?? raw.length;
+    const digitsBeforeCursor = countDigitsBefore(raw, cursorPos);
+
+    // Strip everything but digits and a single decimal point.
+    let cleaned = raw.replace(/[^\d.]/g, "");
+    const firstDot = cleaned.indexOf(".");
+    if (firstDot !== -1) {
+      cleaned = cleaned.slice(0, firstDot + 1) + cleaned.slice(firstDot + 1).replace(/\./g, "");
+    }
+
+    const parsed = cleaned === "" || cleaned === "." ? 0 : Number(cleaned);
+    if (Number.isNaN(parsed)) return;
+    onChange(parsed);
+
+    const display = formatDisplay(cleaned);
+    setText(display);
+    pendingCursorRef.current = indexAfterDigitCount(display, digitsBeforeCursor);
+  };
+
+  const handleBlur = () => {
+    // Tidy up the display on blur (e.g. drop a trailing "." or leading zeros).
+    setText(value === 0 ? "" : formatDisplay(String(value)));
+  };
+
   return (
     <label className="block">
       <span className="text-sm font-medium text-foreground">{label}</span>
       <div className="mt-2 flex items-center rounded-xl border border-border bg-background focus-within:border-primary">
         {prefix && <span className="pl-4 text-muted">{prefix}</span>}
         <input
-          type="number"
+          ref={inputRef}
+          type="text"
           inputMode="decimal"
-          min={min}
-          value={Number.isNaN(value) ? "" : value}
-          onChange={(e) => onChange(e.target.valueAsNumber || 0)}
-          className="w-full bg-transparent px-4 py-3 text-lg font-medium outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+          placeholder="0"
+          value={text}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className="w-full bg-transparent px-4 py-3 text-lg font-medium outline-none"
         />
         {suffix && <span className="pr-4 text-muted">{suffix}</span>}
       </div>
