@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 export default function BlogIndexPage() {
   return (
     <Container className="py-12 sm:py-16">
-      <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Blog</h1>
+      <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Blog</h1>
       <p className="mt-4 max-w-2xl text-lg text-muted">
         Guides and explainers to help you understand how UK tax actually
         works.
@@ -38,16 +38,20 @@ export default function BlogIndexPage() {
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
         {blogPosts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <Card className="h-full transition-colors hover:border-primary">
-              <p className="text-xs text-muted">
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            <Card className="h-full transition-colors duration-200 hover:border-primary">
+              <p className="text-xs tabular-nums text-muted">
                 {new Date(post.date).toLocaleDateString("en-GB", {
                   day: "numeric",
                   month: "long",
                   year: "numeric",
                 })}
               </p>
-              <h2 className="mt-2 font-medium">{post.title}</h2>
+              <h2 className="mt-2 text-balance font-medium">{post.title}</h2>
               <p className="mt-2 text-sm text-muted">{post.description}</p>
             </Card>
           </Link>

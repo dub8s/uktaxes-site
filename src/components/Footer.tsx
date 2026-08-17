@@ -26,7 +26,7 @@ export default function Footer() {
                 <li key={calc.slug}>
                   <Link
                     href={`/${calc.slug}`}
-                    className="text-sm text-muted hover:text-foreground transition-colors"
+                    className="rounded-sm text-sm text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   >
                     {calc.shortName}
                   </Link>
@@ -41,7 +41,7 @@ export default function Footer() {
                 <li key={calc.slug}>
                   <Link
                     href={`/${calc.slug}`}
-                    className="text-sm text-muted hover:text-foreground transition-colors"
+                    className="rounded-sm text-sm text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   >
                     {calc.shortName}
                   </Link>
@@ -66,7 +66,7 @@ export default function Footer() {
         <div className="mt-12 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} uktaxes.co.uk. All rights reserved.</p>
           <p>
-            For guidance only — not financial advice. Always verify figures
+            For guidance only, not financial advice. Always verify figures
             against HMRC.
           </p>
         </div>

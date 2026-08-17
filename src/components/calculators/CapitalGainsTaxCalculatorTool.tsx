@@ -35,7 +35,7 @@ export default function CapitalGainsTaxCalculatorTool() {
         />
         <p className="text-sm text-muted">
           Your other taxable income determines how much of your basic rate band is left for the
-          gain — this decides the 18%/24% split.
+          gain, which decides the 18%/24% split.
         </p>
       </div>
 

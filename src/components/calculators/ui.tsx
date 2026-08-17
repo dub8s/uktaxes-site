@@ -98,7 +98,7 @@ export function NumberField({
   return (
     <label className="block">
       <span className="text-sm font-medium text-foreground">{label}</span>
-      <div className="mt-2 flex items-center rounded-xl border border-border bg-background focus-within:border-primary">
+      <div className="mt-2 flex items-center rounded-xl border border-border bg-background transition-shadow focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
         {prefix && <span className="pl-4 text-muted">{prefix}</span>}
         <input
           ref={inputRef}
@@ -108,7 +108,7 @@ export function NumberField({
           value={text}
           onChange={handleChange}
           onBlur={handleBlur}
-          className="w-full bg-transparent px-4 py-3 text-lg font-medium outline-none"
+          className="w-full bg-transparent px-4 py-3 text-lg font-medium tabular-nums outline-none"
         />
         {suffix && <span className="pr-4 text-muted">{suffix}</span>}
       </div>
@@ -137,10 +137,11 @@ export function RegionToggle({
             key={option.value}
             type="button"
             onClick={() => onChange(option.value)}
-            className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+            aria-pressed={region === option.value}
+            className={`cursor-pointer rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
               region === option.value
                 ? "bg-primary text-primary-foreground"
-                : "text-muted hover:text-foreground"
+                : "text-muted hover:bg-surface hover:text-foreground"
             }`}
           >
             {option.label}
@@ -163,7 +164,13 @@ export function StatRow({
   return (
     <div className="flex items-baseline justify-between py-2">
       <span className={emphasis ? "font-medium" : "text-sm text-muted"}>{label}</span>
-      <span className={emphasis ? "text-2xl font-semibold" : "text-sm font-medium"}>
+      <span
+        className={
+          emphasis
+            ? "text-2xl font-semibold tabular-nums"
+            : "text-sm font-medium tabular-nums"
+        }
+      >
         {value}
       </span>
     </div>
@@ -194,9 +201,11 @@ export function BandBreakdownTable({
           {rows.map((row) => (
             <tr key={row.name} className="border-b border-border last:border-0">
               <td className="py-2.5">{row.name}</td>
-              <td className="py-2.5">{formatPercent(row.rate)}</td>
-              <td className="py-2.5 text-right">{formatCurrency(row.taxableAmount, true)}</td>
-              <td className="py-2.5 text-right">{formatCurrency(row.amount, true)}</td>
+              <td className="py-2.5 tabular-nums">{formatPercent(row.rate)}</td>
+              <td className="py-2.5 text-right tabular-nums">
+                {formatCurrency(row.taxableAmount, true)}
+              </td>
+              <td className="py-2.5 text-right tabular-nums">{formatCurrency(row.amount, true)}</td>
             </tr>
           ))}
         </tbody>

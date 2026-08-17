@@ -52,7 +52,7 @@ export default function DividendTaxCalculatorTool() {
         />
         <RegionToggle region={region} onChange={setRegion} />
         <p className="text-sm text-muted">
-          Dividend tax bands are set UK-wide, so this doesn&apos;t change with region — only
+          Dividend tax bands are set UK-wide, so this doesn’t change with region. Only
           your Income Tax on other income does.
         </p>
       </div>

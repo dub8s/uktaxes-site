@@ -23,12 +23,12 @@ export default function SelfEmployedTaxCalculatorTool() {
         <RegionToggle region={region} onChange={setRegion} />
 
         {result.class2VoluntaryAvailable && (
-          <label className="flex items-start gap-3 rounded-xl border border-border p-4 text-sm">
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-border p-4 text-sm transition-colors hover:bg-surface has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary/60 has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-background">
             <input
               type="checkbox"
               checked={payVoluntaryClass2}
               onChange={(e) => setPayVoluntaryClass2(e.target.checked)}
-              className="mt-0.5 size-4 accent-primary"
+              className="mt-0.5 size-4 cursor-pointer accent-primary focus-visible:outline-none"
             />
             <span>
               Pay voluntary Class 2 National Insurance (
@@ -51,7 +51,7 @@ export default function SelfEmployedTaxCalculatorTool() {
 
         <p className="mt-4 text-sm text-muted">
           {result.class2CreditedAutomatically
-            ? "Your profit is above the Small Profits Threshold, so you get a qualifying year for the State Pension automatically — no Class 2 payment is due."
+            ? "Your profit is above the Small Profits Threshold, so you get a qualifying year for the State Pension automatically. No Class 2 payment is due."
             : "Your profit is below the Small Profits Threshold. You'll still get a qualifying year if you choose to pay Class 2 voluntarily."}
         </p>
 

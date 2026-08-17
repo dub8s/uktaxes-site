@@ -38,14 +38,14 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostJsonLd(post)) }}
       />
       <article className="max-w-3xl">
-        <p className="text-sm text-muted">
+        <p className="text-sm tabular-nums text-muted">
           {new Date(post.date).toLocaleDateString("en-GB", {
             day: "numeric",
             month: "long",
             year: "numeric",
           })}
         </p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="mt-2 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
           {post.title}
         </h1>
         <p className="mt-4 text-lg text-muted">{post.description}</p>
@@ -54,7 +54,9 @@ export default async function BlogPostPage({
           {post.sections.map((section, i) => (
             <section key={i}>
               {section.heading && (
-                <h2 className="text-xl font-semibold tracking-tight">{section.heading}</h2>
+                <h2 className="text-balance text-xl font-semibold tracking-tight">
+                  {section.heading}
+                </h2>
               )}
               {section.paragraphs && (
                 <div className={`space-y-4 text-muted leading-relaxed ${section.heading ? "mt-3" : ""}`}>
@@ -77,11 +79,17 @@ export default async function BlogPostPage({
 
       {relatedCalculators.length > 0 && (
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-xl font-semibold tracking-tight">Related calculators</h2>
+          <h2 className="text-balance text-xl font-semibold tracking-tight">
+            Related calculators
+          </h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {relatedCalculators.map((c) => (
-              <Link key={c.slug} href={`/${c.slug}`}>
-                <Card className="h-full transition-colors hover:border-primary">
+              <Link
+                key={c.slug}
+                href={`/${c.slug}`}
+                className="rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <Card className="h-full transition-colors duration-200 hover:border-primary">
                   <h3 className="font-medium">{c.name}</h3>
                   <p className="mt-2 text-sm text-muted">{c.description}</p>
                 </Card>

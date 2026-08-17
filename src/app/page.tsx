@@ -27,15 +27,15 @@ export default function Home() {
             2026/27 tax year rates
             <span aria-hidden="true">›</span>
           </span>
-          <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-6xl">
+          <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
             UK tax calculators,
             <br />
             <span className="text-primary">made simple.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">
             Free, fast, up-to-date calculators for salary, Income Tax, National
-            Insurance, dividends, self-employment, and capital gains — sourced
-            directly from HMRC&apos;s published rates.
+            Insurance, dividends, self-employment, and capital gains, sourced
+            directly from HMRC’s published rates.
           </p>
           <div className="mt-8 flex justify-center gap-3">
             <ButtonLink href="/salary-calculator" variant="dark">
@@ -58,9 +58,9 @@ export default function Home() {
               </div>
               <Link
                 href="/salary-calculator"
-                className="text-xs font-medium text-primary hover:underline"
+                className="rounded-sm text-xs font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                Open full calculator →
+                Open full calculator <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className="p-6">
@@ -71,14 +71,18 @@ export default function Home() {
       </section>
 
       <Container className="py-16 sm:py-20">
-        <h2 className="text-2xl font-semibold tracking-tight">All calculators</h2>
+        <h2 className="text-balance text-2xl font-semibold tracking-tight">All calculators</h2>
         <p className="mt-2 text-muted">
           Pick a calculator to get an instant, accurate breakdown.
         </p>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {calculators.map((calc) => (
-            <Link key={calc.slug} href={`/${calc.slug}`}>
-              <Card className="h-full transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_12px_24px_-12px_rgba(24,24,27,0.15)]">
+            <Link
+              key={calc.slug}
+              href={`/${calc.slug}`}
+              className="rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <Card className="h-full transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_12px_24px_-12px_rgba(24,24,27,0.15)]">
                 <h3 className="font-medium">{calc.name}</h3>
                 <p className="mt-2 text-sm text-muted">{calc.description}</p>
               </Card>
