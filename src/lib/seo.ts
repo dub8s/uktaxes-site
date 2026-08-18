@@ -98,8 +98,7 @@ export function calculatorJsonLd(calculator: Calculator) {
 export function blogPostJsonLd(post: BlogPost) {
   const url = `${SITE_URL}/blog/${post.slug}`;
 
-  return {
-    "@context": "https://schema.org",
+  const blogPosting = {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
@@ -107,6 +106,28 @@ export function blogPostJsonLd(post: BlogPost) {
     url,
     author: { "@type": "Organization", name: SITE_NAME },
     publisher: { "@type": "Organization", name: SITE_NAME },
+  };
+
+  if (!post.faqs || post.faqs.length === 0) {
+    return { "@context": "https://schema.org", ...blogPosting };
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      blogPosting,
+      {
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
+    ],
   };
 }
 

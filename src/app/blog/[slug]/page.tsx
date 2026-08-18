@@ -31,6 +31,10 @@ export default async function BlogPostPage({
     .map((s) => getCalculator(s))
     .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
+  const relatedPosts = (post.relatedPostSlugs ?? [])
+    .map((s) => getBlogPost(s))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
   return (
     <Container className="py-12 sm:py-16">
       <script
@@ -76,6 +80,42 @@ export default async function BlogPostPage({
           ))}
         </div>
       </article>
+
+      {post.faqs && post.faqs.length > 0 && (
+        <section className="mt-16 max-w-3xl">
+          <h2 className="text-balance text-xl font-semibold tracking-tight">
+            Frequently asked questions
+          </h2>
+          <div className="mt-6 space-y-6">
+            {post.faqs.map((faq) => (
+              <div key={faq.question}>
+                <h3 className="font-medium">{faq.question}</h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {relatedPosts.length > 0 && (
+        <section className="mt-16 max-w-3xl">
+          <h2 className="text-balance text-xl font-semibold tracking-tight">Related reading</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {relatedPosts.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/blog/${p.slug}`}
+                className="rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <Card className="h-full transition-colors duration-200 hover:border-primary">
+                  <h3 className="font-medium">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{p.description}</p>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {relatedCalculators.length > 0 && (
         <section className="mt-16 max-w-3xl">

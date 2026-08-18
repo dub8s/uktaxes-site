@@ -274,7 +274,7 @@ export const calculators: Calculator[] = [
       },
     ],
     relatedSlugs: ["dividend-tax-calculator", "income-tax-calculator", "salary-calculator"],
-    explainerSlug: "how-uk-tax-bands-work-2026-27",
+    explainerSlug: "capital-gains-tax-second-home",
   },
   {
     slug: "take-home-pay-calculator",
