@@ -15,5 +15,9 @@ export function formatCurrency(amount: number, precise = false): string {
 }
 
 export function formatPercent(rate: number): string {
-  return `${(rate * 100).toFixed(rate * 100 % 1 === 0 ? 0 : 1)}%`;
+  // Show exactly as many decimal places as the rate needs, so 10.75% and
+  // 39.35% never get rounded down to one decimal place (e.g. "10.8%").
+  const value = Math.round(rate * 100 * 100) / 100;
+  const decimals = Number.isInteger(value) ? 0 : Number.isInteger(value * 10) ? 1 : 2;
+  return `${value.toFixed(decimals)}%`;
 }

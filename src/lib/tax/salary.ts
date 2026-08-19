@@ -25,10 +25,14 @@ export function calculateTakeHomePay(
   const gross = Math.max(0, grossAnnual);
   const pensionPercent = Math.min(100, Math.max(0, options.pensionPercent ?? 0));
   const pensionContribution = gross * (pensionPercent / 100);
-  const incomeApplicable = gross - pensionContribution;
+  const taxableIncome = gross - pensionContribution;
 
-  const incomeTax = calculateIncomeTax(incomeApplicable, options.region ?? "rUK");
-  const nationalInsurance = calculateNationalInsurance(incomeApplicable);
+  const incomeTax = calculateIncomeTax(taxableIncome, options.region ?? "rUK");
+  // A net pay arrangement reduces earnings for Income Tax but not for National
+  // Insurance: HMRC assesses Class 1 NI on gross earnings before pension
+  // deductions, with no equivalent NI relief (HMRC manual NIM02365). Only
+  // salary sacrifice reduces both, and that's a different arrangement.
+  const nationalInsurance = calculateNationalInsurance(gross);
 
   const netAnnual =
     gross - pensionContribution - incomeTax.totalTax - nationalInsurance.totalContribution;

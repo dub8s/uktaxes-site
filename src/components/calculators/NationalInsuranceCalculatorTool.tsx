@@ -22,7 +22,10 @@ export default function NationalInsuranceCalculatorTool() {
         />
         <p className="text-sm text-muted">
           Class 1 (employee) National Insurance, calculated on earnings above{" "}
-          {formatCurrency(NI_PRIMARY_THRESHOLD)} a year.
+          {formatCurrency(NI_PRIMARY_THRESHOLD)} a year. This is an annualised estimate for a
+          standard Category A employee with earnings spread evenly across the year; NI is
+          normally worked out per pay period, so bonuses, irregular pay, or multiple jobs can
+          make your actual deduction differ.
         </p>
       </div>
 

@@ -44,17 +44,19 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "The Personal Allowance",
         paragraphs: [
-          "Before any bands come into play, everyone gets a Personal Allowance: £12,570 of income you can earn each tax year completely tax-free. It's been frozen at this level since April 2022 and is due to stay there until April 2031.",
-          "If your income goes above £100,000, the Personal Allowance starts shrinking: by £1 for every £2 you earn over that threshold. It disappears entirely once your income reaches £125,140. This is why earnings between £100,000 and £125,140 effectively get taxed at a higher rate than the 40% higher rate band suggests: you're paying tax on the income itself, and losing tax-free allowance at the same time.",
+          "Before any bands come into play, most taxpayers get a Personal Allowance: £12,570 of income you can earn each tax year completely tax-free. It's been frozen at this level since April 2021 and is due to stay there until April 2031.",
+          "If your adjusted net income goes above £100,000, the Personal Allowance starts shrinking: by £1 for every £2 you earn over that threshold. It disappears entirely once your income reaches £125,140. This is why earnings between £100,000 and £125,140 effectively get taxed at a higher rate than the 40% higher rate band suggests: you're paying tax on the income itself, and losing tax-free allowance at the same time.",
         ],
       },
       {
         heading: "Income Tax bands in England, Wales, and Northern Ireland",
-        paragraphs: ["After the Personal Allowance, taxable income is split into three bands:"],
+        paragraphs: [
+          "Here's how your total income maps onto the three bands, assuming you get the standard £12,570 Personal Allowance:",
+        ],
         list: [
-          "Basic rate: 20% on taxable income up to £37,700 (so up to £50,270 of total income)",
-          "Higher rate: 40% on taxable income from £37,700 to £112,570 (up to £125,140 of total income)",
-          "Additional rate: 45% on taxable income above £112,570 (above £125,140 of total income)",
+          "Basic rate: 20% on total income from £12,571 to £50,270 (the first £37,700 above your Personal Allowance)",
+          "Higher rate: 40% on total income from £50,271 to £125,140 (the next £74,870 above that)",
+          "Additional rate: 45% on total income above £125,140",
         ],
       },
       {
@@ -72,6 +74,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
+        paragraphs: [
+          "These Scottish thresholds also assume the standard £12,570 Personal Allowance, which tapers away above £100,000 of adjusted net income in the same way as the rest of the UK. They only apply to non-savings, non-dividend income too, things like salary, pensions, and self-employment profit. Savings interest and dividends are still taxed using UK-wide rates and bands, even for Scottish taxpayers, since those aren't devolved.",
+        ],
+      },
+      {
         heading: "A worked example",
         paragraphs: [
           "Say you earn £60,000 a year in England, Wales, or Northern Ireland. The first £12,570 is tax-free. The next £37,700 (taking you to £50,270) is taxed at 20%, which comes to £7,540. The remaining £9,730 (from £50,270 to £60,000) falls in the higher rate band and is taxed at 40%, coming to £3,892.",
@@ -85,8 +92,15 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
+        heading: "National Insurance thresholds",
         paragraphs: [
-          "If you want the exact numbers for your own income, our Income Tax Calculator and Salary Calculator apply these bands automatically, including the Personal Allowance taper and the Scotland/rest-of-UK split.",
+          "Income Tax isn't the only deduction from your pay. If you're an employee, you also pay Class 1 National Insurance, worked out using its own separate thresholds rather than the Personal Allowance.",
+          "For 2026/27, employees pay nothing on the first £12,570 of earnings (the Primary Threshold), then 8% on earnings up to £50,270 (the Upper Earnings Limit), then 2% on anything above that. These thresholds are the same across England, Wales, Scotland, and Northern Ireland, since National Insurance isn't devolved. NI is also normally worked out per pay period rather than as a single annual calculation, so our National Insurance Calculator gives an annualised estimate for a standard employee with evenly spread earnings, rather than a guaranteed pay-period figure.",
+        ],
+      },
+      {
+        paragraphs: [
+          "If you want the numbers for your own income, our Income Tax Calculator and Salary Calculator apply these bands automatically, including the Personal Allowance taper and the Scotland/rest-of-UK split. Our National Insurance Calculator covers the NI side separately.",
         ],
       },
     ],
@@ -138,12 +152,12 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Reporting and paying dividend tax",
         paragraphs: [
-          "If your dividends are within the £500 allowance, or they come from shares held in an ISA, you don't need to tell HMRC about them at all. Above the allowance, dividends are reported through Self Assessment, with any tax due by 31 January following the end of the tax year.",
+          "If your dividends are within the £500 allowance, or they come from shares held in an ISA, you don't need to tell HMRC about them at all. Above the allowance, you need to tell HMRC. If you already complete Self Assessment, include them on your return. If your dividend income is £10,000 or less and you don't normally file Self Assessment, HMRC can instead collect the tax through an adjustment to your tax code, without you needing to register for a return. Dividend income over £10,000 generally means you need to register for Self Assessment. Either way, tax due outside Self Assessment is normally payable by 31 January following the end of the tax year, the same as a Self Assessment balancing payment.",
         ],
       },
       {
         paragraphs: [
-          "Our Dividend Tax Calculator runs this exact calculation for your own numbers. Enter your other income and your dividend income, and it shows the full band-by-band breakdown.",
+          "Our Dividend Tax Calculator runs this calculation for your own numbers. Enter your other income and your dividend income, and it shows the full band-by-band breakdown.",
         ],
       },
     ],
@@ -152,7 +166,7 @@ export const blogPosts: BlogPost[] = [
     slug: "self-employed-tax-explained",
     title: "Self-employed tax explained: Income Tax and National Insurance for sole traders",
     description:
-      "How Income Tax, Class 4 National Insurance, and the trading allowance work for sole traders in 2026/27, plus key Self Assessment dates.",
+      "How Income Tax, Class 4 National Insurance, and the trading allowance work for sole traders in 2026/27, plus key Self Assessment dates and Making Tax Digital.",
     date: "2026-04-20",
     relatedCalculatorSlugs: [
       "self-employed-tax-calculator",
@@ -181,14 +195,21 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "What happened to Class 2 National Insurance",
         paragraphs: [
-          "Class 2 National Insurance used to be a flat weekly charge that most sole traders paid to build up State Pension entitlement. It was abolished as a compulsory contribution from April 2024. Now, if your profits are £7,105 or more, you get a qualifying year towards the State Pension automatically, with nothing extra to pay.",
+          "Class 2 National Insurance used to be a flat weekly charge that most sole traders paid to build up State Pension entitlement. It was abolished as a compulsory contribution from April 2024. Now, if your profits are £7,105 or more, HMRC treats your Class 2 contributions as having been paid, giving you a qualifying year towards the State Pension automatically, with nothing extra to pay. Class 4 itself doesn't create the qualifying year; it's Class 2 being treated as paid that does.",
           "If your profits are below £7,105, you don't get a qualifying year automatically. You can still choose to pay Class 2 voluntarily, currently £3.65 a week, to protect your State Pension record for that year.",
+        ],
+      },
+      {
+        heading: "Making Tax Digital for Income Tax",
+        paragraphs: [
+          "Making Tax Digital for Income Tax became mandatory from 6 April 2026 for sole traders and landlords whose qualifying trading and/or property income was over £50,000 in 2024/25. If that's you, you now need to keep digital records using HMRC-recognised software and send quarterly updates summarising your income and expenses, on top of your usual annual Self Assessment return. The quarterly updates are short summaries, not full tax returns, and HMRC isn't applying penalty points for late ones during 2026/27 as a transitional grace period.",
+          "The threshold is being phased down over time: it drops to £30,000 of qualifying income from April 2027, and to £20,000 from April 2028, bringing more sole traders and landlords into scope each year. If you're below the current threshold, ordinary Self Assessment is still all you need for now.",
         ],
       },
       {
         heading: "The £1,000 trading allowance",
         paragraphs: [
-          "If your self-employment income is small (casual freelance work, selling items online, the odd bit of contract work), the trading allowance lets you earn up to £1,000 a year completely tax-free, with no need to register with HMRC or file a return if that's your only income from self-employment.",
+          "If your self-employment income is small (casual freelance work, selling items online, the odd bit of contract work), the trading allowance lets you earn up to £1,000 a year completely tax-free. In most cases there's no need to register with HMRC or file a return if that's your only income from self-employment, though there are exceptions, for example if you need to file a return for another reason, so it's worth checking HMRC's guidance if you're unsure.",
           "The allowance is applied to your income before expenses are deducted, and you can't claim both the allowance and your actual expenses, just whichever is higher.",
         ],
       },
@@ -196,7 +217,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Key dates: Self Assessment deadlines and payments on account",
         paragraphs: [
           "The main deadline is 31 January following the end of the tax year. This is when you must file your return and pay any tax owed for that year (your \"balancing payment\").",
-          "If your Self Assessment bill is £1,000 or more, and you haven't already paid most of it another way, HMRC also asks for payments on account: two advance instalments towards next year's bill, each equal to half of the previous year's liability. The first is due on 31 January, alongside that year's balancing payment, and the second on 31 July, so the January payment can end up being a lot larger than the tax bill alone.",
+          "If your Self Assessment bill is £1,000 or more, and less than 80% of your tax for the year was collected another way (for example through PAYE on other income), HMRC also asks for payments on account: two advance instalments towards next year's bill, each equal to half of the previous year's liability. The first is due on 31 January, alongside that year's balancing payment, and the second on 31 July, so the January payment can end up being a lot larger than the tax bill alone.",
         ],
       },
       {
@@ -261,6 +282,16 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
+        heading: "Second-job codes if you're a Scottish or Welsh taxpayer",
+        paragraphs: [
+          "BR, D0, and D1 are the rest-of-UK flat-rate codes for a second job or pension. Scottish and Welsh taxpayers see their own versions instead, reflecting their own bands:",
+        ],
+        list: [
+          "Scotland: SBR (basic rate, 20%), SD0 (intermediate rate, 21%), SD1 (higher rate, 42%), SD2 (advanced rate, 45%), SD3 (top rate, 48%)",
+          "Wales: CBR (basic rate), CD0 (higher rate), CD1 (additional rate) — currently the same 20%/40%/45% rates as the rest of the UK, since Welsh rates haven't diverged so far",
+        ],
+      },
+      {
         heading: "Emergency tax codes",
         paragraphs: [
           "An emergency tax code is applied when HMRC doesn't yet have full details of your income, usually when you start a new job without a P45, begin getting a pension, or start receiving company benefits. It works on a non-cumulative basis, meaning each pay period is taxed in isolation rather than against your total income for the year, which can mean you overpay tax temporarily.",
@@ -270,7 +301,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "How to check your tax code is right",
         paragraphs: [
-          "Compare your code against your circumstances. If you have a single job and nothing unusual going on, you should be on 1257L (or the Scottish or Welsh equivalent). If you have a second job, that one will typically show BR, D0, or D1. If you've claimed Marriage Allowance, expect an M or N.",
+          "Compare your code against your circumstances. If you have a single job and nothing unusual going on, you should be on 1257L (or the Scottish or Welsh equivalent). If you have a second job, that one will typically show BR, D0, D1, or their Scottish/Welsh equivalents. If you've claimed Marriage Allowance, expect an M or N.",
           "The most reliable way to check is your personal tax account at gov.uk/personal-tax-account, which shows your current code, the reasoning behind it, and lets you flag if something looks wrong.",
         ],
       },
@@ -282,7 +313,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         paragraphs: [
-          "Once you know your correct tax code, our Income Tax Calculator and Salary Calculator show exactly how much you should be paying, so you can spot a mismatch before it becomes a bigger problem.",
+          "Our Income Tax Calculator and Salary Calculator apply the standard Personal Allowance and bands, which is a useful comparison if you're on 1257L or its Scottish/Welsh equivalent. They don't currently take a tax code as an input, though, so if yours reflects something else, like a K code, a second-job code, or a Marriage Allowance adjustment, your actual PAYE deduction will differ from what the calculators show.",
         ],
       },
     ],
@@ -300,7 +331,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "What's the difference between BR, D0, and D1?",
         answer:
-          "BR taxes all income from that job at the basic rate (20%), D0 at the higher rate (40%), and D1 at the additional rate (45%). They're normally used on a second job or pension once your Personal Allowance is already accounted for elsewhere.",
+          "BR taxes all income from that job at the basic rate (20%), D0 at the higher rate (40%), and D1 at the additional rate (45%). They're normally used on a second job or pension once your Personal Allowance is already accounted for elsewhere. Scottish and Welsh taxpayers see different equivalents, such as SBR/SD0-SD3 or CBR/CD0/CD1.",
       },
       {
         question: "Where do I find my tax code?",
@@ -318,7 +349,7 @@ export const blogPosts: BlogPost[] = [
     slug: "second-job-tax-explained",
     title: "Do you pay more tax on a second job? UK tax explained",
     description:
-      "Working two jobs in the UK doesn't increase your total tax bill, but it can look that way. Here's exactly how tax and National Insurance work across multiple jobs.",
+      "Working two jobs doesn't necessarily increase your total Income Tax bill, but National Insurance works differently, and it can all look confusing on your payslips. Here's how it actually works.",
     date: "2026-05-04",
     relatedCalculatorSlugs: [
       "income-tax-calculator",
@@ -329,7 +360,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         paragraphs: [
-          "Short answer: no, taking on a second job doesn't increase your total tax bill compared with earning the same combined amount from one job. It just gets collected differently, and that can make your second payslip look like it's being taxed unfairly hard.",
+          "Short answer: having two jobs doesn't inherently increase your total Income Tax bill, because Income Tax is based broadly on your combined taxable income, regardless of how many jobs it comes from. National Insurance works differently: it's normally calculated separately for each job, so two jobs can sometimes mean paying more Class 1 National Insurance overall than the same total income from a single employer. It's usually your second payslip looking heavily taxed that causes the confusion, more than the underlying reality.",
         ],
       },
       {
@@ -350,6 +381,11 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
+        paragraphs: [
+          "These are the rest-of-UK codes. Scottish taxpayers see SBR, SD0, SD1, SD2, or SD3 instead, and Welsh taxpayers see CBR, CD0, or CD1, reflecting their own bands. See our guide to UK tax codes for the full list.",
+        ],
+      },
+      {
         heading: "National Insurance with two jobs",
         paragraphs: [
           "National Insurance is usually calculated separately for each job against its own Upper Earnings Limit (£50,270 for 2026/27). If you're a high earner with more than one job, this can mean you pay more Class 1 National Insurance overall than someone earning the identical total from a single employer. If that applies to you, you can apply to HMRC to defer National Insurance on one of your jobs using form CA72A, so it's charged at the reduced 2% rate instead of the full rate.",
@@ -359,7 +395,7 @@ export const blogPosts: BlogPost[] = [
         heading: "A worked example",
         paragraphs: [
           "Say you earn £30,000 from your main job and £10,000 from a second job, £40,000 in total. Your main job uses the standard 1257L code: £17,430 is taxable after the Personal Allowance, taxed at 20%, coming to £3,486. Your second job is taxed entirely at the basic rate under a BR code: £10,000 at 20% comes to £2,000. Total Income Tax: £5,486.",
-          "Now compare that to earning the same £40,000 from a single job: £27,430 taxable after the Personal Allowance, all within the basic rate band, taxed at 20%, also coming to £5,486. Identical. Splitting the income across two jobs made no difference to the total, as long as the tax codes are set correctly.",
+          "Now compare that to earning the same £40,000 from a single job: £27,430 taxable after the Personal Allowance, all within the basic rate band, taxed at 20%, also coming to £5,486. Identical Income Tax, as long as the tax codes are set correctly. National Insurance is a separate calculation on top in both cases, and since £40,000 sits below the £50,270 Upper Earnings Limit either way, it also comes out the same here regardless of how the income is split.",
         ],
       },
       {
@@ -378,12 +414,12 @@ export const blogPosts: BlogPost[] = [
       {
         question: "Do I pay more tax overall with two jobs?",
         answer:
-          "No. Your total Income Tax is the same as it would be earning the combined amount from a single job, assuming your tax codes are set correctly across both.",
+          "Your total Income Tax is normally the same as it would be earning the combined amount from a single job, assuming your tax codes are set correctly across both. National Insurance is calculated separately for each job, though, so it can work out slightly higher with two jobs than with one at the same combined income.",
       },
       {
         question: "What tax code will my second job have?",
         answer:
-          "Usually BR, D0, or D1, depending on which Income Tax band your combined income falls into once your main job has used its share of the Personal Allowance and lower bands.",
+          "Usually BR, D0, or D1 (or the Scottish/Welsh equivalents), depending on which Income Tax band your combined income falls into once your main job has used its share of the Personal Allowance and lower bands.",
       },
       {
         question: "Do I pay National Insurance on both jobs?",
@@ -406,7 +442,7 @@ export const blogPosts: BlogPost[] = [
     slug: "pay-rise-bonus-tax-explained",
     title: "Will a pay rise or bonus push you into a higher tax bracket?",
     description:
-      "A pay rise or bonus will never leave you worse off, but a few hidden tax traps between £50,000 and £125,140 can eat a big chunk of the extra. Here's how it actually works.",
+      "Crossing an Income Tax band by itself won't reduce your after-tax pay, but hidden tax traps between £50,000 and £125,140, and cliff edges like Tax-Free Childcare, can catch people out. Here's how it actually works.",
     date: "2026-05-11",
     relatedCalculatorSlugs: [
       "salary-calculator",
@@ -417,7 +453,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         paragraphs: [
-          "No. Moving into a higher tax band only affects the slice of income above the threshold, never your whole salary, and a pay rise or bonus will always leave you with more take-home pay than before, never less. For the full mechanics of how tax bands stack, see our guide to how UK tax bands work.",
+          "No, not from the PAYE mechanics alone. Moving into a higher tax band only affects the slice of income above the threshold, never your whole salary, so a pay rise or bonus itself will always leave you with more take-home pay through Income Tax and National Insurance than before. What it won't necessarily protect you from is a separate, income-linked cliff edge like losing Tax-Free Childcare, which can leave a household worse off overall even though the PAYE portion behaves exactly as described here. For the full mechanics of how tax bands stack, see our guide to how UK tax bands work.",
         ],
       },
       {
@@ -432,26 +468,26 @@ export const blogPosts: BlogPost[] = [
           "The genuine danger zones aren't the headline 40% or 45% bands, they're a couple of narrower income ranges where the effective marginal rate spikes well above the rate you'd expect:",
         ],
         list: [
-          "£100,000–£125,140: the Personal Allowance tapers away by £1 for every £2 earned. On top of paying 40% Income Tax on that slice, you're also losing tax-free allowance that then gets taxed too, producing an effective marginal rate of around 60%.",
-          "£60,000–£80,000: if you or your partner claim Child Benefit and either of you earns in this range, the High Income Child Benefit Charge claws back 1% of your Child Benefit for every £200 earned above £60,000, on top of your normal Income Tax, until it's fully withdrawn at £80,000.",
+          "£100,000–£125,140: the Personal Allowance tapers away by £1 for every £2 of adjusted net income earned. In England, Wales, and Northern Ireland, that's on top of 40% Income Tax, producing an effective marginal rate of around 60%. Scottish taxpayers sit in the 45% advanced rate band across most of this range, so the same taper effect pushes their effective rate to around 67.5%, before National Insurance.",
+          "£60,000–£80,000: if you or your partner claim Child Benefit and either of you has adjusted net income in this range, the High Income Child Benefit Charge claws back 1% of your Child Benefit for every £200 earned above £60,000, on top of your normal Income Tax, until it's fully withdrawn at £80,000.",
         ],
       },
       {
         heading: "A worked example: crossing into the higher rate band",
         paragraphs: [
-          "Say your salary rises from £48,000 to £52,000, a £4,000 increase. At £48,000, Income Tax is £7,086 (all taxed at the basic rate). At £52,000, the first £37,700 of taxable income is still taxed at 20%, but the remaining £1,730 falls into the higher rate band at 40%, bringing total Income Tax to £8,232.",
-          "That's an extra £1,146 in tax on a £4,000 raise, leaving you £2,854 better off after tax. You keep over 71% of the increase, and you're unambiguously better off, even though part of the rise was taxed at 40%.",
+          "Say your salary rises from £48,000 to £52,000, a £4,000 increase, and you're in England, Wales, or Northern Ireland. At £48,000, Income Tax is £7,086 (all taxed at the basic rate) and Class 1 National Insurance is £2,834.40. At £52,000, the first £37,700 of taxable income is still taxed at 20%, but the remaining £1,730 falls into the higher rate band at 40%, bringing Income Tax to £8,232; National Insurance rises to £3,050.60, since £1,730 of the increase falls above the Upper Earnings Limit and is charged at 2% instead of 8%.",
+          "That's an extra £1,146 in Income Tax and £216.20 in National Insurance, £1,362.20 in total, on a £4,000 rise. You keep £2,637.80 of it, around 65.9%, and you're still better off overall, even though part of the rise was taxed at 40% and part of your National Insurance dropped to only 2%.",
         ],
       },
       {
         heading: "Is it ever worth turning down a pay rise?",
         paragraphs: [
-          "No, but if you're heading into one of the tax trap zones above, it's worth knowing your options. Many people use pension salary sacrifice to bring their taxable income back under £100,000 or £60,000, since pension contributions reduce the income these thresholds are measured against. That's a genuine, common strategy, though whether it's right for you depends on your own circumstances and is worth discussing with a qualified adviser rather than treating as one-size-fits-all advice.",
+          "Rarely, but if you're heading into one of the tax trap zones above, or close to a cliff edge like the £100,000 Tax-Free Childcare threshold, it's worth knowing your options. Many people use pension salary sacrifice to bring their adjusted net income back under £100,000 or £60,000, since pension contributions reduce the income these thresholds are measured against. That's a genuine, common strategy, though whether it's right for you depends on your own circumstances and is worth discussing with a qualified adviser rather than treating as one-size-fits-all advice.",
         ],
       },
       {
         paragraphs: [
-          "Our Salary Calculator and Income Tax Calculator can show you exactly how much of your own pay rise or bonus you'd keep, band by band.",
+          "Our Salary Calculator shows the full Income Tax and National Insurance picture for any salary you enter. Try it at both your old and new figures to see the real difference, band by band.",
         ],
       },
     ],
@@ -469,17 +505,17 @@ export const blogPosts: BlogPost[] = [
       {
         question: "What is the 60% tax trap?",
         answer:
-          "Between £100,000 and £125,140, you lose £1 of Personal Allowance for every £2 you earn, on top of paying 40% Income Tax, which creates an effective marginal rate of around 60% on income in that band.",
+          "Between £100,000 and £125,140 of adjusted net income, you lose £1 of Personal Allowance for every £2 you earn, on top of paying 40% Income Tax, creating an effective marginal rate of around 60% in England, Wales, and Northern Ireland. Scottish taxpayers in the same range are closer to 67.5%, since they pay the 45% advanced rate instead of 40%.",
       },
       {
         question: "Does the Child Benefit charge affect my pay rise?",
         answer:
-          "If you or your partner claim Child Benefit and either of you earns over £60,000, part of it is clawed back as an extra charge on top of your normal Income Tax, fully withdrawn by £80,000.",
+          "If you or your partner claim Child Benefit and either of you has adjusted net income over £60,000, part of it is clawed back as an extra charge on top of your normal Income Tax, fully withdrawn by £80,000.",
       },
       {
         question: "Will I ever take home less after a pay rise?",
         answer:
-          "No. UK marginal tax rates never reach 100%, so a pay rise always increases your take-home pay, even within the higher-effective-rate bands described above.",
+          "Not from PAYE alone. UK marginal Income Tax and National Insurance rates never reach 100%, so a pay rise always increases your take-home pay through PAYE. Separate income-linked thresholds, like the Tax-Free Childcare cut-off at £100,000, can still leave a household worse off overall even though the pay rise itself always nets you more pay.",
       },
     ],
   },
@@ -504,37 +540,39 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "How much Capital Gains Tax will you pay?",
         paragraphs: [
-          "The first £3,000 of gains each tax year is tax-free (the Annual Exempt Amount). Above that, the rate depends on your income: 18% on any gain that falls within your remaining basic rate band, and 24% on anything above it. These are the same rates that apply to shares and other chargeable assets, since property no longer has its own higher rate. For the full mechanics of how the 18%/24% split works, see our Capital Gains Tax Calculator.",
+          "The first £3,000 of gains each tax year is tax-free (the Annual Exempt Amount). For most individuals selling an ordinary second home or investment, the rate then depends on your income: 18% on any gain that falls within your remaining basic rate band, and 24% on anything above it. These are the main rates that apply to shares and most other chargeable assets too, since property lost its own higher rate from 30 October 2024. They're not universal, though: trustees and personal representatives generally pay 24% regardless of income, and reliefs like Business Asset Disposal Relief can give an 18% rate on qualifying business gains. For the full mechanics of the 18%/24% split, see our Capital Gains Tax Calculator.",
         ],
       },
       {
         heading: "What counts as your gain",
         paragraphs: [
-          "Your gain is the sale price minus the original purchase price, minus allowable costs: stamp duty and legal fees when you bought, estate agent and solicitor fees when you sold, and the cost of capital improvements that add lasting value, such as an extension. Routine maintenance, redecorating, and mortgage interest don't count.",
+          "If you bought the property, your gain is normally the sale price minus what you paid for it, minus allowable costs: stamp duty and legal fees when you bought, estate agent and solicitor fees when you sold, and the cost of capital improvements that add lasting value, such as an extension or a loft conversion that creates extra living space. Routine maintenance, redecorating, mortgage interest, and like-for-like repairs, such as replacing an existing roof, don't count, even when modern materials are used.",
+          "If you inherited the property rather than buying it, your starting point is different: your acquisition cost is normally the property's market value at the date of death (the probate value), not whatever the person you inherited it from originally paid. So if your grandfather bought a house for £50,000 decades ago and you inherited it when it was worth £300,000, your gain when you sell is measured from that £300,000 figure, not the original £50,000.",
         ],
       },
       {
         heading: "The 60-day reporting deadline",
         paragraphs: [
           "If you're a UK resident selling UK residential property and there's Capital Gains Tax to pay, you must report the sale and pay the tax within 60 days of completion, not exchange of contracts, using HMRC's UK Property Reporting Service. This is separate from, and earlier than, your normal Self Assessment deadline.",
-          "Miss it and you'll face an immediate £100 penalty, with further penalties if it's still outstanding after 6 and 12 months, plus interest on the unpaid tax. Given how easy it is to miss a 60-day window during a house move, it's worth reporting as soon as the sale completes.",
+          "Miss it and you'll face an immediate £100 penalty. If the return is still outstanding 3 months after the deadline, daily penalties of £10 a day kick in for up to 90 days (up to £900 in total), and further penalties apply if it's still outstanding after 6 and 12 months, on top of interest on the unpaid tax. Given how easy it is to miss a 60-day window during a house move, it's worth reporting as soon as the sale completes.",
         ],
       },
       {
         heading: "Do you need to report if there's no tax to pay?",
         paragraphs: [
           "If your total gains for the year are within your £3,000 Annual Exempt Amount, you generally don't need to report through the 60-day property service. If you're unsure whether your gain is covered, it's worth checking with HMRC or an adviser before the deadline passes rather than after.",
+          "For gains on assets other than UK property, like shares, the 60-day service doesn't apply. You'd normally report those through Self Assessment, or through HMRC's real-time Capital Gains Tax service if you don't otherwise need to file a return.",
         ],
       },
       {
         heading: "What about your main home?",
         paragraphs: [
-          "Private Residence Relief exempts your only or main home from Capital Gains Tax entirely, provided it's been your main home for the whole time you've owned it, you haven't let out part of it, you haven't used part of it exclusively for business, and the grounds are under 5,000 square metres. If any of those don't apply, for example you've let out a room or lived elsewhere for part of the ownership period, only part of the gain may be exempt, and it's worth checking HMRC's detailed guidance for your specific situation.",
+          "Private Residence Relief exempts your only or main home from Capital Gains Tax entirely, provided it's been your main home for the whole time you've owned it, you haven't let part of it out as a separate letting, you haven't used part of it exclusively for business, and the grounds are under 5,000 square metres. A single lodger living as part of your household doesn't normally count against this and shouldn't restrict the relief; having more than one lodger, or running part of the property as a separate letting, is more likely to. If any of those don't apply, for example you lived elsewhere for part of the ownership period, only part of the gain may be exempt, and it's worth checking HMRC's detailed guidance for your specific situation.",
         ],
       },
       {
         paragraphs: [
-          "Our Capital Gains Tax Calculator works out exactly how much you'd owe once you know your gain and other taxable income, so you can budget for the 60-day payment before your sale completes.",
+          "Our Capital Gains Tax Calculator works out how much you'd owe once you know your gain and other taxable income, so you can budget for the 60-day payment before your sale completes.",
         ],
       },
     ],
@@ -552,17 +590,22 @@ export const blogPosts: BlogPost[] = [
       {
         question: "What happens if I miss the 60-day deadline?",
         answer:
-          "An immediate £100 penalty, with further penalties the longer it's left unpaid (at 6 and 12 months), plus interest on the outstanding tax.",
+          "An immediate £100 penalty, then daily penalties of £10 a day after 3 months (up to £900), with further penalties at 6 and 12 months if it's still outstanding, plus interest on the tax owed.",
       },
       {
         question: "Are CGT rates different for buy-to-let property versus shares?",
         answer:
-          "Not any more. Since 30 October 2024, the same 18%/24% rates apply to residential property, shares, and other chargeable assets.",
+          "Not for the main rates. Since 30 October 2024, the same 18%/24% rates apply to residential property, shares, and most other chargeable assets. Reliefs like Business Asset Disposal Relief, and special treatment for trustees and personal representatives, can still mean a different rate applies in specific cases.",
       },
       {
         question: "Can I deduct renovation costs from my gain?",
         answer:
-          "Only capital improvements that add lasting value, like an extension or a new roof, not routine repairs, redecorating, or maintenance.",
+          "Only capital improvements that add lasting value, like an extension or a loft conversion, not routine repairs, redecorating, or maintenance. Replacing an existing roof is usually treated as a repair rather than an improvement, even with modern materials.",
+      },
+      {
+        question: "What if I inherited the property instead of buying it?",
+        answer:
+          "Your acquisition cost is normally the property's market value at the date of death (the probate value), not what the original owner paid for it decades earlier. Your gain is measured from that value, not the historic purchase price.",
       },
     ],
   },
@@ -624,7 +667,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         paragraphs: [
-          "Once your Marriage Allowance is in place, our Income Tax Calculator and Salary Calculator can show you exactly how it changes your take-home pay.",
+          "Our Income Tax Calculator and Salary Calculator don't currently have a Marriage Allowance input, so they won't reflect the transfer directly, but the £252 saving described above applies on top of whatever they show for the receiving partner's normal tax bill.",
         ],
       },
     ],
