@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { calculateIncomeTax } from "@/lib/tax/incomeTax";
 import { formatCurrency, formatPercent } from "@/lib/format";
 import type { IncomeTaxRegion } from "@/data/tax-rates-2026-27";
-import { BandBreakdownTable, NumberField, RegionToggle, StatRow } from "./ui";
+import { BandBreakdownTable, NumberField, RegionToggle, ResultsDisclaimer, StatRow } from "./ui";
 
 export default function IncomeTaxCalculatorTool() {
   const [grossIncome, setGrossIncome] = useState(35_000);
@@ -29,6 +29,7 @@ export default function IncomeTaxCalculatorTool() {
           <StatRow label="Income Tax due" value={formatCurrency(result.totalTax)} emphasis />
           <StatRow label="Effective tax rate" value={formatPercent(result.effectiveRate)} />
         </div>
+        <ResultsDisclaimer />
 
         <div className="mt-6 rounded-xl bg-surface p-5">
           <StatRow label="Gross income" value={formatCurrency(result.grossIncome)} />

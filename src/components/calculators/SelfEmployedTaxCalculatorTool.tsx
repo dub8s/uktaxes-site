@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { calculateSelfEmployedTax } from "@/lib/tax/selfEmployed";
 import { formatCurrency } from "@/lib/format";
 import type { IncomeTaxRegion } from "@/data/tax-rates-2026-27";
-import { BandBreakdownTable, NumberField, RegionToggle, StatRow } from "./ui";
+import { BandBreakdownTable, NumberField, RegionToggle, ResultsDisclaimer, StatRow } from "./ui";
 
 export default function SelfEmployedTaxCalculatorTool() {
   const [profit, setProfit] = useState(35_000);
@@ -48,6 +48,7 @@ export default function SelfEmployedTaxCalculatorTool() {
             <StatRow label="Voluntary Class 2 National Insurance" value={formatCurrency(result.class2Paid)} />
           )}
         </div>
+        <ResultsDisclaimer />
 
         <p className="mt-4 text-sm text-muted">
           {result.class2CreditedAutomatically

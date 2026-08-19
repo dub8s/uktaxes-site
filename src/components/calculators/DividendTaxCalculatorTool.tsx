@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { calculateDividendTax } from "@/lib/tax/dividendTax";
 import { formatCurrency } from "@/lib/format";
 import type { IncomeTaxRegion } from "@/data/tax-rates-2026-27";
-import { BandBreakdownTable, NumberField, RegionToggle, StatRow } from "./ui";
+import { BandBreakdownTable, NumberField, RegionToggle, ResultsDisclaimer, StatRow } from "./ui";
 
 export default function DividendTaxCalculatorTool() {
   const [otherIncome, setOtherIncome] = useState(20_000);
@@ -63,6 +63,7 @@ export default function DividendTaxCalculatorTool() {
           <StatRow label="Income Tax on other income" value={formatCurrency(result.otherIncomeTax)} />
           <StatRow label="Dividend Tax" value={formatCurrency(result.dividendTax)} />
         </div>
+        <ResultsDisclaimer />
 
         <div className="mt-6 rounded-xl bg-surface p-5">
           <StatRow label="Personal Allowance" value={formatCurrency(result.personalAllowance)} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { type IncomeTaxRegion } from "@/data/tax-rates-2026-27";
 import { formatCurrency, formatPercent } from "@/lib/format";
 
@@ -174,6 +175,22 @@ export function StatRow({
         {value}
       </span>
     </div>
+  );
+}
+
+export function ResultsDisclaimer() {
+  return (
+    <p className="mt-3 text-xs text-muted">
+      Estimates only, not financial advice. Verify with HMRC or a qualified accountant before
+      making decisions. See our{" "}
+      <Link
+        href="/terms-and-disclaimer"
+        className="rounded-sm underline hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      >
+        full disclaimer
+      </Link>
+      .
+    </p>
   );
 }
 

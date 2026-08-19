@@ -288,7 +288,7 @@ export const blogPosts: BlogPost[] = [
         ],
         list: [
           "Scotland: SBR (basic rate, 20%), SD0 (intermediate rate, 21%), SD1 (higher rate, 42%), SD2 (advanced rate, 45%), SD3 (top rate, 48%)",
-          "Wales: CBR (basic rate), CD0 (higher rate), CD1 (additional rate) — currently the same 20%/40%/45% rates as the rest of the UK, since Welsh rates haven't diverged so far",
+          "Wales: CBR (basic rate), CD0 (higher rate), CD1 (additional rate), currently the same 20%/40%/45% rates as the rest of the UK, since Welsh rates haven't diverged so far",
         ],
       },
       {

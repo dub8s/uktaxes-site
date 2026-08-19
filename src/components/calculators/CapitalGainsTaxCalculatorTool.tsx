@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { calculateCapitalGainsTax } from "@/lib/tax/capitalGains";
 import { formatCurrency } from "@/lib/format";
-import { BandBreakdownTable, NumberField, StatRow } from "./ui";
+import { BandBreakdownTable, NumberField, ResultsDisclaimer, StatRow } from "./ui";
 
 export default function CapitalGainsTaxCalculatorTool() {
   const [gain, setGain] = useState(15_000);
@@ -43,6 +43,7 @@ export default function CapitalGainsTaxCalculatorTool() {
         <div className="rounded-xl bg-surface p-5">
           <StatRow label="Capital Gains Tax due" value={formatCurrency(result.totalTax)} emphasis />
         </div>
+        <ResultsDisclaimer />
 
         <div className="mt-6 rounded-xl bg-surface p-5">
           <StatRow label="Total gain" value={formatCurrency(result.gain)} />

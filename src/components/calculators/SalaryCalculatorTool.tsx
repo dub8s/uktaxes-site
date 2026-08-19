@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { calculateTakeHomePay } from "@/lib/tax/salary";
 import { formatCurrency } from "@/lib/format";
 import type { IncomeTaxRegion } from "@/data/tax-rates-2026-27";
-import { BandBreakdownTable, NumberField, RegionToggle, StatRow } from "./ui";
+import { BandBreakdownTable, NumberField, RegionToggle, ResultsDisclaimer, StatRow } from "./ui";
 
 export default function SalaryCalculatorTool() {
   const [grossAnnual, setGrossAnnual] = useState(35_000);
@@ -40,6 +40,7 @@ export default function SalaryCalculatorTool() {
           <StatRow label="Per month" value={formatCurrency(result.netMonthly)} />
           <StatRow label="Per week" value={formatCurrency(result.netWeekly)} />
         </div>
+        <ResultsDisclaimer />
 
         <div className="mt-6 rounded-xl bg-surface p-5">
           <StatRow label="Gross salary" value={formatCurrency(result.grossAnnual)} />

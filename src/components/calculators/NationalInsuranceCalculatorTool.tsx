@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { calculateNationalInsurance } from "@/lib/tax/nationalInsurance";
 import { formatCurrency } from "@/lib/format";
 import { NI_PRIMARY_THRESHOLD } from "@/data/tax-rates-2026-27";
-import { BandBreakdownTable, NumberField, StatRow } from "./ui";
+import { BandBreakdownTable, NumberField, ResultsDisclaimer, StatRow } from "./ui";
 
 export default function NationalInsuranceCalculatorTool() {
   const [grossIncome, setGrossIncome] = useState(35_000);
@@ -37,6 +37,7 @@ export default function NationalInsuranceCalculatorTool() {
             emphasis
           />
         </div>
+        <ResultsDisclaimer />
 
         <div className="mt-6">
           <h3 className="mb-3 text-sm font-medium text-muted">Breakdown</h3>
