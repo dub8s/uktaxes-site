@@ -76,6 +76,38 @@ export default async function BlogPostPage({
                   ))}
                 </ul>
               )}
+              {section.table && (
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-border text-left text-muted">
+                        {section.table.headers.map((header, j) => (
+                          <th
+                            key={j}
+                            className={`py-2 font-medium ${j > 0 ? "text-right" : ""}`}
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {section.table.rows.map((row, j) => (
+                        <tr key={j} className="border-b border-border last:border-0">
+                          {row.map((cell, k) => (
+                            <td
+                              key={k}
+                              className={`py-2.5 tabular-nums ${k > 0 ? "text-right" : ""}`}
+                            >
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </section>
           ))}
         </div>

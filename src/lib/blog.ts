@@ -2,6 +2,10 @@ export type BlogPostSection = {
   heading?: string;
   paragraphs?: string[];
   list?: string[];
+  table?: {
+    headers: string[];
+    rows: string[][];
+  };
 };
 
 export type BlogFaq = {
@@ -696,6 +700,370 @@ export const blogPosts: BlogPost[] = [
         question: "Does applying cost anything?",
         answer:
           "No, it's free to apply directly at gov.uk. Never pay a third party to do it for you.",
+      },
+    ],
+  },
+  {
+    slug: "salary-after-tax-per-month",
+    title: "£20k-£150k a year: how much is that a month after tax?",
+    description:
+      "See exactly what £25k, £30k, £40k, £50k, £60k, £70k, £100k and other common salaries work out to per month after Income Tax and National Insurance in 2026/27, plus how Scotland compares.",
+    date: "2026-06-01",
+    relatedCalculatorSlugs: [
+      "salary-calculator",
+      "take-home-pay-calculator",
+      "income-tax-calculator",
+    ],
+    relatedPostSlugs: [
+      "how-uk-tax-bands-work-2026-27",
+      "pay-rise-bonus-tax-explained",
+      "student-loan-repayments-explained",
+    ],
+    sections: [
+      {
+        paragraphs: [
+          "If you earn £60,000 a year in England, Wales, or Northern Ireland, you take home about £3,780 a month after Income Tax and National Insurance in 2026/27, assuming the standard tax code, no pension contributions, and no student loan. That's the answer to the most common version of this question, but the same logic applies at any salary, so below is a full reference table covering £20,000 to £150,000, plus how Scotland compares.",
+          "These figures use the standard 1257L tax code and the current 2026/27 rates. Pension contributions, student loan repayments, and other deductions aren't included, since they vary from person to person, but see the notes below the tables for how to adjust for them.",
+        ],
+      },
+      {
+        heading: "How much is your salary after tax, per month?",
+        paragraphs: [
+          "The table below shows Income Tax, National Insurance, and take-home pay for common salaries in England, Wales, and Northern Ireland, for a standard employee with no pension contributions, no student loan, and the standard 1257L tax code.",
+        ],
+        table: {
+          headers: [
+            "Salary (per year)",
+            "Income Tax",
+            "National Insurance",
+            "Take-home (per year)",
+            "Take-home (per month)",
+          ],
+          rows: [
+            ["£20,000", "£1,486", "£594", "£17,920", "£1,493"],
+            ["£22,000", "£1,886", "£754", "£19,360", "£1,613"],
+            ["£25,000", "£2,486", "£994", "£21,520", "£1,793"],
+            ["£28,000", "£3,086", "£1,234", "£23,680", "£1,973"],
+            ["£30,000", "£3,486", "£1,394", "£25,120", "£2,093"],
+            ["£32,000", "£3,886", "£1,554", "£26,560", "£2,213"],
+            ["£35,000", "£4,486", "£1,794", "£28,720", "£2,393"],
+            ["£38,000", "£5,086", "£2,034", "£30,880", "£2,573"],
+            ["£40,000", "£5,486", "£2,194", "£32,320", "£2,693"],
+            ["£42,000", "£5,886", "£2,354", "£33,760", "£2,813"],
+            ["£45,000", "£6,486", "£2,594", "£35,920", "£2,993"],
+            ["£48,000", "£7,086", "£2,834", "£38,080", "£3,173"],
+            ["£50,000", "£7,486", "£2,994", "£39,520", "£3,293"],
+            ["£55,000", "£9,432", "£3,111", "£42,457", "£3,538"],
+            ["£60,000", "£11,432", "£3,211", "£45,357", "£3,780"],
+            ["£65,000", "£13,432", "£3,311", "£48,257", "£4,021"],
+            ["£70,000", "£15,432", "£3,411", "£51,157", "£4,263"],
+            ["£75,000", "£17,432", "£3,511", "£54,057", "£4,505"],
+            ["£80,000", "£19,432", "£3,611", "£56,957", "£4,746"],
+            ["£90,000", "£23,432", "£3,811", "£62,757", "£5,230"],
+            ["£100,000", "£27,432", "£4,011", "£68,557", "£5,713"],
+          ],
+        },
+      },
+      {
+        heading: "Higher earners: £110,000 to £150,000",
+        paragraphs: [
+          "Above £100,000, your Personal Allowance starts tapering away, which is why take-home pay grows more slowly here than the salary jump alone would suggest. See our guide to why a pay rise can push you into the 60% tax trap for the mechanics.",
+        ],
+        table: {
+          headers: [
+            "Salary (per year)",
+            "Income Tax",
+            "National Insurance",
+            "Take-home (per year)",
+            "Take-home (per month)",
+          ],
+          rows: [
+            ["£110,000", "£33,432", "£4,211", "£72,357", "£6,030"],
+            ["£120,000", "£39,675", "£4,411", "£75,914", "£6,326"],
+            ["£125,000", "£43,050", "£4,511", "£77,439", "£6,453"],
+            ["£150,000", "£54,332", "£5,011", "£90,658", "£7,555"],
+          ],
+        },
+      },
+      {
+        heading: "A worked example: £60,000 a year",
+        paragraphs: [
+          "Take the £60,000 example from the top of this page. After the £12,570 Personal Allowance, £37,700 is taxed at the basic rate (20%), coming to £7,540. The remaining £9,730 falls into the higher rate band and is taxed at 40%, coming to £3,892. Total Income Tax: £11,432.",
+          "National Insurance is calculated separately: 8% on earnings between £12,570 and £50,270 (£3,016), then 2% on the remaining £9,730 above that (£194.60). Total National Insurance: £3,210.60.",
+          "£60,000 minus £11,432 of Income Tax and £3,210.60 of National Insurance leaves £45,357.40 a year, or £3,779.78 a month, rounded to £3,780 in the table above.",
+        ],
+      },
+      {
+        heading: "How Scotland compares",
+        paragraphs: [
+          "Scotland has its own Income Tax bands, so take-home pay can differ from the rest of the UK, though not always in the direction people expect. Below roughly £43,662, Scottish taxpayers can actually take home slightly more than the rest of the UK, thanks to a lower starter rate on the first slice of income above the Personal Allowance. Above that, the gap runs the other way, since Scotland's intermediate and higher rates start earlier than the rest of the UK's.",
+        ],
+        table: {
+          headers: [
+            "Salary (per year)",
+            "Take-home per month (Scotland)",
+            "Take-home per month (rest of UK)",
+          ],
+          rows: [
+            ["£25,000", "£1,797", "£1,793"],
+            ["£30,000", "£2,096", "£2,093"],
+            ["£35,000", "£2,392", "£2,393"],
+            ["£40,000", "£2,688", "£2,693"],
+            ["£45,000", "£2,960", "£2,993"],
+            ["£50,000", "£3,169", "£3,293"],
+            ["£60,000", "£3,634", "£3,780"],
+            ["£70,000", "£4,101", "£4,263"],
+            ["£80,000", "£4,555", "£4,746"],
+          ],
+        },
+      },
+      {
+        heading: "What this table doesn't include",
+        paragraphs: [
+          "These figures are Income Tax and National Insurance only. If any of the following apply to you, your actual take-home pay will be different:",
+        ],
+        list: [
+          "Pension contributions: a net pay pension reduces your Income Tax but not your National Insurance, so it lowers your taxable income without changing the NI figures shown here",
+          "Student loan repayments: deducted separately, at 9% of income above your plan's threshold (6% for Postgraduate Loans); see our guide to student loan repayments for the current thresholds",
+          "Salary sacrifice arrangements, such as for a company car or cycle-to-work scheme, which reduce both Income Tax and National Insurance",
+          "Marriage Allowance, if you've transferred or received part of a Personal Allowance",
+          "A non-standard tax code, for example if you have a second job, owe tax from a previous year, or receive a taxable benefit like private medical insurance",
+        ],
+      },
+      {
+        paragraphs: [
+          "Our Salary Calculator and Take-Home Pay Calculator run this same calculation for any salary and pension percentage you enter, with a full band-by-band breakdown.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How much is £60,000 a year after tax per month?",
+        answer:
+          "About £3,780 a month in England, Wales, or Northern Ireland, after Income Tax and National Insurance, assuming the standard tax code and no pension or student loan deductions. In Scotland it's around £3,634 a month, since more of the income falls into higher Scottish bands.",
+      },
+      {
+        question: "How much is £50,000 a year after tax per month?",
+        answer:
+          "About £3,293 a month in England, Wales, or Northern Ireland, or around £3,169 a month in Scotland, on the standard tax code with no pension or student loan deductions.",
+      },
+      {
+        question: "How much is £40,000 a year after tax per month?",
+        answer: "About £2,693 a month in England, Wales, or Northern Ireland, or around £2,688 a month in Scotland.",
+      },
+      {
+        question: "How much is £30,000 a year after tax per month?",
+        answer:
+          "About £2,093 a month in England, Wales, or Northern Ireland, or around £2,096 a month in Scotland, where it's marginally higher at this income level.",
+      },
+      {
+        question: "Why might my actual take-home pay be different from this table?",
+        answer:
+          "Pension contributions, student loan repayments, salary sacrifice benefits, Marriage Allowance, and non-standard tax codes all change the result. See the \"What this table doesn't include\" section above, or use our Salary Calculator with your own pension percentage.",
+      },
+      {
+        question: "Is take-home pay the same as net pay?",
+        answer:
+          "Yes, they mean the same thing: what's left of your salary after Income Tax, National Insurance, and any other deductions.",
+      },
+    ],
+  },
+  {
+    slug: "student-loan-repayments-explained",
+    title: "Student loan repayments explained: Plan 1, 2, 4, 5, and Postgraduate thresholds",
+    description:
+      "How UK student loan repayments actually work in 2026/27: thresholds and rates for every plan, how it's deducted from your pay, and what it means for your take-home pay.",
+    date: "2026-06-15",
+    relatedCalculatorSlugs: [
+      "salary-calculator",
+      "take-home-pay-calculator",
+      "income-tax-calculator",
+    ],
+    relatedPostSlugs: ["salary-after-tax-per-month", "how-uk-tax-bands-work-2026-27"],
+    sections: [
+      {
+        paragraphs: [
+          "A UK student loan repayment isn't like paying off a personal loan or a mortgage. There's no fixed monthly instalment and no repayment at all if you're not earning enough. Instead, it's collected like a tax: a percentage of your income above a threshold, deducted automatically from your pay alongside Income Tax and National Insurance.",
+          "Which threshold and rate apply depends entirely on which \"plan\" your loan is on, which in turn depends on where and when you studied. Here's how it works for 2026/27.",
+        ],
+      },
+      {
+        heading: "Which plan are you on?",
+        paragraphs: ["Your plan type is fixed when you take out the loan and doesn't change later. Broadly:"],
+        list: [
+          "Plan 1: English or Welsh students who started an undergraduate course before September 2012, or Scottish and Northern Irish students on income-contingent loans",
+          "Plan 2: English or Welsh students who started an undergraduate course between September 2012 and July 2023",
+          "Plan 4: Scottish students funded by the Student Awards Agency for Scotland (SAAS)",
+          "Plan 5: English or Welsh students who started an undergraduate course from August 2023 onwards",
+          "Postgraduate Loan: Master's or Doctoral loans, on top of and separate from any undergraduate plan",
+        ],
+      },
+      {
+        paragraphs: [
+          "If you're not sure which plan you're on, check your account at gov.uk/sign-in-to-manage-your-student-loan-balance, or look for the plan type on the starter checklist you completed when you started your current job.",
+        ],
+      },
+      {
+        heading: "2026/27 thresholds and rates",
+        paragraphs: [
+          "Once your income for the year goes above your plan's threshold, you repay a fixed percentage of everything above it, not your whole income:",
+        ],
+        table: {
+          headers: ["Plan", "Threshold (2026/27)", "Repayment rate"],
+          rows: [
+            ["Plan 1", "£26,900", "9%"],
+            ["Plan 2", "£29,385", "9%"],
+            ["Plan 4", "£33,795", "9%"],
+            ["Plan 5", "£25,000", "9%"],
+            ["Postgraduate Loan", "£21,000", "6%"],
+          ],
+        },
+      },
+      {
+        heading: "How the repayment is actually worked out",
+        paragraphs: [
+          "Only the income above your threshold counts. If you're on Plan 2 and earn £35,000, you don't repay 9% of £35,000; you repay 9% of the £5,615 that sits above the £29,385 threshold, which comes to £505.35 a year, or around £42 a month.",
+          "Like Income Tax and National Insurance, this is normally worked out per pay period rather than as one annual figure. If your income varies, for example a bonus month, your repayment can vary month to month even though your plan's threshold and rate stay fixed.",
+        ],
+      },
+      {
+        heading: "Can you repay two student loans at once?",
+        paragraphs: [
+          "Yes. An undergraduate plan (1, 2, 4, or 5) and a Postgraduate Loan are repaid independently and at the same time if you have both, each measured against its own threshold. Because the Postgraduate Loan threshold (£21,000) is lower than every undergraduate threshold, it's common to be repaying both simultaneously once your income passes somewhere between £25,000 and £34,000, depending on your undergraduate plan.",
+          "For example, someone on Plan 2 (threshold £29,385) with a Postgraduate Loan (threshold £21,000) earning £35,000 would repay 9% of the £5,615 above the Plan 2 threshold (£505.35), plus 6% of the £14,000 above the Postgraduate threshold (£840), a combined £1,345.35 a year across both loans.",
+        ],
+      },
+      {
+        heading: "How it shows up on your payslip",
+        paragraphs: [
+          "If you're an employee, your employer deducts student loan repayments automatically through PAYE, shown as a separate line, usually labelled \"Student Loan\", alongside your Income Tax and National Insurance. You don't need to do anything to trigger it, though you do need to have correctly told your employer which plan (or plans) you're on, usually via the starter checklist when you begin a job.",
+          "If you're self-employed, repayments are calculated and paid through Self Assessment instead, alongside your Income Tax and Class 4 National Insurance bill, based on your profit for the year.",
+        ],
+      },
+      {
+        heading: "Interest on your student loan",
+        paragraphs: [
+          "Interest accrues on your loan balance whether or not you're currently earning above the threshold, and the rate depends on your plan and, for some plans, your income. For the period 1 September 2026 to 31 August 2027: Plan 1 and Plan 5 both charge interest at 4.1% (the Retail Price Index rate); Plan 2 and Postgraduate Loans are ordinarily charged at a rate between RPI and RPI+3% depending on income, but both are capped at 6% for this period following an announcement in April 2026. None of this affects how much is deducted from your pay each month, since repayments are based purely on your income above the threshold, not your outstanding balance.",
+        ],
+      },
+      {
+        heading: "Does this affect our take-home pay calculators?",
+        paragraphs: [
+          "Not currently. Our Salary Calculator and Take-Home Pay Calculator show Income Tax and National Insurance, but don't yet model student loan repayments. If you have a student loan, subtract your plan's repayment, worked out as shown above, from the net figure those calculators give you to get a more complete picture of what actually lands in your account.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the student loan repayment threshold for 2026/27?",
+        answer:
+          "It depends on your plan: £26,900 for Plan 1, £29,385 for Plan 2, £33,795 for Plan 4, £25,000 for Plan 5, and £21,000 for Postgraduate Loans.",
+      },
+      {
+        question: "How much of my salary goes towards my student loan?",
+        answer:
+          "9% of your income above your plan's threshold (6% for a Postgraduate Loan), not 9% of your whole salary. Nothing is deducted on income below the threshold.",
+      },
+      {
+        question: "Can I be on two student loan plans at the same time?",
+        answer:
+          "You can have one undergraduate plan (1, 2, 4, or 5) and a Postgraduate Loan running at the same time, and both are repaid independently based on their own thresholds.",
+      },
+      {
+        question: "Is my student loan repayment shown separately from tax on my payslip?",
+        answer:
+          "Yes, it appears as its own line, usually labelled \"Student Loan\", alongside your Income Tax and National Insurance deductions.",
+      },
+      {
+        question: "Do your calculators include student loan repayments?",
+        answer:
+          "Not yet. Our Salary and Take-Home Pay Calculators show Income Tax and National Insurance only, so subtract your plan's repayment separately for a complete figure.",
+      },
+    ],
+  },
+  {
+    slug: "working-from-home-tax-relief-abolished",
+    title: "Working from home tax relief has been scrapped: what changed in April 2026",
+    description:
+      "HMRC abolished the £6-a-week working from home tax relief for employees from 6 April 2026. Here's exactly what changed, what's still available, and how to claim for previous years.",
+    date: "2026-08-17",
+    relatedCalculatorSlugs: ["income-tax-calculator", "salary-calculator"],
+    relatedPostSlugs: ["marriage-allowance-explained", "salary-after-tax-per-month"],
+    sections: [
+      {
+        paragraphs: [
+          "Until 5 April 2026, employees who had to work from home could claim Income Tax relief for the extra costs involved, either a simplified flat rate of £6 a week with no receipts needed, or the actual additional costs with evidence. From 6 April 2026, the start of the current 2026/27 tax year, HMRC abolished this claim for employees entirely, both the flat rate and the actual-costs route. If you've claimed it before and are wondering why the option's gone, or why your accountant or tax software won't let you claim it for this year, here's what actually changed.",
+        ],
+      },
+      {
+        heading: "What was scrapped, exactly",
+        paragraphs: [
+          "The change removes the ability for an employee to personally claim tax relief from HMRC for unreimbursed homeworking costs, whether that's the £6-a-week flat rate or a claim based on actual bills. This applied whether working from home was your own choice or a requirement of your job. It doesn't matter which method you used to claim before; neither is available for 2026/27 onwards.",
+        ],
+      },
+      {
+        heading: "Why HMRC scrapped it",
+        paragraphs: [
+          "HMRC said that when it reviewed a sample of claims, over half turned out to be ineligible, often because the person wasn't actually required to work from home or hadn't genuinely incurred extra costs. Removing the relief is expected to save the Treasury around £115 million over five years from April 2026.",
+        ],
+      },
+      {
+        heading: "What the relief was actually worth",
+        paragraphs: [
+          "It's worth being clear about the numbers, since the £6-a-week flat rate is often misunderstood as a £312-a-year refund. It wasn't: you got tax relief on £312 of income, meaning that amount was treated as tax-free rather than handed back in full. In practice that meant a saving of £62.40 a year for a basic rate taxpayer, £124.80 a year at the higher rate, and £140.40 a year at the additional rate, a modest amount that's now gone for anyone who doesn't get it reimbursed by their employer instead.",
+        ],
+      },
+      {
+        heading: "What's still available",
+        paragraphs: [
+          "This change only affects your ability to claim relief personally from HMRC. It doesn't touch your employer's ability to reimburse you directly. If your employer chooses to pay or reimburse homeworking costs, either the £6-a-week flat rate or actual costs with evidence, and there's an objective requirement for you to work from home, that payment remains completely free of Income Tax and National Insurance for both of you, exactly as before.",
+          "In other words, nothing has changed if your employer already covers this. The door that's closed is the one where you claimed it yourself because your employer didn't.",
+        ],
+      },
+      {
+        heading: "Can you still claim for 2025/26 or earlier years?",
+        paragraphs: [
+          "Yes. 2025/26 was the last tax year the relief applied, so if you were eligible and haven't claimed for it yet, you still can. You can also backdate a claim for up to 4 earlier tax years if you were eligible and never claimed, currently as far back as 2022/23, the same standard time limit HMRC applies to other backdated claims like Marriage Allowance.",
+          "To claim for a past year, use a P87 form if you don't normally complete Self Assessment, or include it on your return if you do. Depending on how it's processed, you'll either get a direct refund or an adjustment to your tax code.",
+        ],
+      },
+      {
+        heading: "What to do now if you work from home",
+        paragraphs: [
+          "If you're genuinely required to work from home and your employer doesn't currently reimburse your costs, the only realistic option now is to ask them to start. Structured correctly, it costs your employer nothing extra in tax or National Insurance, and it's tax-free income for you, unlike the HMRC claim, which is gone for good from 2026/27 onwards.",
+        ],
+      },
+      {
+        paragraphs: [
+          "Working from home relief was never reflected as a separate input in our calculators; if you were claiming it, it showed up as a reduction to your tax bill outside what our Income Tax Calculator and Salary Calculator model. From 2026/27, that's simply no longer part of the picture unless your employer reimburses you directly.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can I still claim working from home tax relief in 2026/27?",
+        answer:
+          "No. HMRC abolished the employee self-claim route, both the £6-a-week flat rate and actual-cost claims, from 6 April 2026.",
+      },
+      {
+        question: "How much was working from home tax relief actually worth?",
+        answer:
+          "It gave tax relief on £312 a year, not a £312 refund, working out at £62.40 a year for a basic rate taxpayer, £124.80 at the higher rate, and £140.40 at the additional rate.",
+      },
+      {
+        question: "Can I still claim for the 2025/26 tax year?",
+        answer:
+          "Yes, that was the last year the relief applied. If you haven't claimed yet, you can still do so via a P87 form or your Self Assessment return.",
+      },
+      {
+        question: "Can I claim for tax years I missed before 2025/26?",
+        answer:
+          "Yes, up to 4 earlier tax years if you were eligible and never claimed, currently back to 2022/23.",
+      },
+      {
+        question: "Does this affect homeworking costs my employer pays me directly?",
+        answer:
+          "No. Employer reimbursement for homeworking costs remains tax and National Insurance free where there's an objective requirement to work from home. Only the personal claim route from HMRC has been removed.",
       },
     ],
   },
