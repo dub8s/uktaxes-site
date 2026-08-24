@@ -1067,6 +1067,354 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "salary-vs-dividends-director-tax-efficient",
+    title: "Salary vs dividends: the most tax-efficient way to pay yourself as a director",
+    description:
+      "How limited company directors typically combine a small salary with dividends to minimise tax in 2026/27, including Corporation Tax, Employer National Insurance, and the Employment Allowance.",
+    date: "2026-08-20",
+    relatedCalculatorSlugs: ["dividend-tax-calculator", "salary-calculator", "income-tax-calculator"],
+    relatedPostSlugs: ["dividend-tax-explained", "how-uk-tax-bands-work-2026-27"],
+    sections: [
+      {
+        paragraphs: [
+          "If you run your own limited company, you usually get to choose how you're paid: salary, dividends, or a mix of both. That choice matters, because salary and dividends are taxed under completely different rules, and getting the split right can be worth thousands of pounds a year compared to taking everything one way.",
+          "This isn't personal advice, your own circumstances (other income, other directors, whether your company has staff) can change the right answer, so it's worth running your specific numbers past an accountant. But the underlying mechanics are the same for most single-director companies, and they're worth understanding before that conversation.",
+        ],
+      },
+      {
+        heading: "Why salary and dividends are taxed so differently",
+        paragraphs: [
+          "Salary is a business expense. It's deducted from your company's profit before Corporation Tax is worked out, but it's charged to Income Tax and National Insurance on the way out, both the employee's National Insurance and the company's own employer National Insurance.",
+          "Dividends work the other way round. They're paid out of profit that's already had Corporation Tax deducted, so there's no further deduction for the company. For the director receiving them, dividends are never subject to National Insurance at all, employee or employer, just dividend tax above the dividend allowance.",
+        ],
+      },
+      {
+        heading: "Corporation Tax sets the starting point",
+        paragraphs: [
+          "Since however much salary you take reduces the profit Corporation Tax is charged on, it's worth knowing where your company sits:",
+        ],
+        list: [
+          "Small profits rate: 19% on profit up to £50,000",
+          "Main rate: 25% on profit above £250,000",
+          "Marginal relief: a sliding scale between those two thresholds, working out at an effective marginal rate of 26.5% on profit within that band",
+        ],
+      },
+      {
+        paragraphs: [
+          "These thresholds are divided by the number of associated companies you have, so if you own more than one company, the actual thresholds that apply to each are lower.",
+        ],
+      },
+      {
+        heading: "The two salary levels most directors consider",
+        paragraphs: [
+          "There isn't one universally correct salary. Most guidance for 2026/27 centres on two figures, and which one suits you depends on a single factor: whether your company can claim the Employment Allowance.",
+        ],
+        list: [
+          "£6,708, the Lower Earnings Limit: below your £12,570 Personal Allowance, so no Income Tax, and below the £12,570 Primary Threshold, so no employee National Insurance either. It's also enough to count as a qualifying year towards your State Pension. The catch is that £6,708 sits above the £5,000 employer National Insurance secondary threshold, so if your company can't claim the Employment Allowance, this salary does trigger a small amount of employer National Insurance.",
+          "£12,570, the full Personal Allowance: still no Income Tax and no employee National Insurance, since both thresholds match. If your company can claim the Employment Allowance, the employer National Insurance on the extra salary between £6,708 and £12,570 is absorbed by the allowance, so you can extract more as a Corporation-Tax-deductible salary at no extra National Insurance cost.",
+        ],
+      },
+      {
+        heading: "The Employment Allowance is the deciding factor",
+        paragraphs: [
+          "The Employment Allowance can reduce a company's employer National Insurance bill by up to £10,500 a year for 2026/27. The restriction that catches most contractors and small business owners: a company generally can't claim it if the director is the only person paid above the secondary threshold. If you employ at least one other member of staff earning above £5,000 a year, you likely qualify. If you're the sole director with no other staff, you likely don't, in which case a salary right at £5,000 (avoiding employer National Insurance entirely, but missing the State Pension qualifying year) or £6,708 (accepting a small employer National Insurance cost to secure that qualifying year) are the two figures worth comparing.",
+        ],
+      },
+      {
+        heading: "A worked example",
+        paragraphs: [
+          "Say your company has £60,000 of profit available for the year, before any director's salary is deducted, and you're a sole director without other staff, so the Employment Allowance isn't available. Compare taking a £6,708 salary plus dividends against taking dividends only.",
+          "With a £6,708 salary: employer National Insurance on the £1,708 above the secondary threshold comes to £256.20, so £6,964.20 is deducted from profit before Corporation Tax. That leaves £53,035.80 of profit, taxed at an effective 19.43% under marginal relief, a Corporation Tax bill of £10,304.49. The remaining £42,731.31 is paid out as dividends. Your remaining Personal Allowance (£5,862, since the salary used £6,708 of it) plus the £500 dividend allowance shelters £6,362 of that tax-free; the rest, £36,369.31, falls in the basic rate band and is taxed at 10.75%, £3,909.70. You take home £45,529.61 in total.",
+          "With dividends only: the full £60,000 is taxed at Corporation Tax first, an effective 20.25% under marginal relief, £12,150, leaving £47,850 to pay out as dividends. Your full £12,570 Personal Allowance plus the £500 dividend allowance shelters £13,070 tax-free; the remaining £34,780 is taxed at 10.75%, £3,738.85. You take home £44,111.15 in total.",
+          "The small salary comes out £1,418.46 ahead, even after paying employer National Insurance on it, because the Corporation Tax saved by deducting it from profit outweighs that cost, and you get a State Pension qualifying year included. This is a simplified single-company example; associated companies, other income, or a company that does qualify for the Employment Allowance would change the numbers.",
+        ],
+      },
+      {
+        paragraphs: [
+          "One more route worth knowing about: employer pension contributions are also deducted from profit before Corporation Tax, and unlike salary, they're not subject to any National Insurance at all, employee or employer. For directors who don't need to draw out every pound of profit immediately, pension contributions are often the most tax-efficient use of surplus profit, worth discussing alongside your salary and dividend split.",
+          "None of our calculators currently model the combined salary, dividend, and Corporation Tax picture for a limited company in one place. Our Dividend Tax Calculator, Salary Calculator, and Income Tax Calculator can each check one piece of the puzzle individually.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the most tax-efficient director's salary for 2026/27?",
+        answer:
+          "Most guidance points to either £6,708 (the Lower Earnings Limit, giving a State Pension qualifying year) or £12,570 (the full Personal Allowance). Which is better depends mainly on whether your company can claim the Employment Allowance; without it, a small amount of employer National Insurance applies to salary above £5,000.",
+      },
+      {
+        question: "Do dividends count towards my Personal Allowance?",
+        answer:
+          "Yes. Dividends use up any remaining Personal Allowance after other income (like salary) before the dividend allowance and dividend tax rates apply.",
+      },
+      {
+        question: "Can I claim the Employment Allowance as a sole director?",
+        answer:
+          "Generally not, if you're the only person paid above the secondary threshold. You typically need at least one other employee earning above £5,000 a year to qualify.",
+      },
+      {
+        question: "Do I pay National Insurance on dividends?",
+        answer:
+          "No. Dividends aren't subject to National Insurance at all, for you as the recipient or for the company paying them. This is the main reason dividends are more tax-efficient than salary once you're above the National Insurance thresholds.",
+      },
+      {
+        question: "Is it better to take a bigger salary or bigger dividends?",
+        answer:
+          "For most single-director companies without other staff, a small salary (enough to secure a State Pension qualifying year) topped up with dividends tends to beat an all-dividend or all-salary approach, because it balances the Corporation Tax saving from a deductible salary against the National Insurance cost. The exact crossover point depends on your company's profit and Employment Allowance eligibility.",
+      },
+    ],
+  },
+  {
+    slug: "uk-tax-rates-bands-2026-27-cheat-sheet",
+    title: "UK tax rates and bands for 2026/27: the full cheat sheet",
+    description:
+      "Every major UK tax rate, band, and allowance for 2026/27 in one place: Income Tax, National Insurance, dividends, Capital Gains Tax, student loans, and more.",
+    date: "2026-08-22",
+    relatedCalculatorSlugs: ["salary-calculator", "income-tax-calculator", "national-insurance-calculator"],
+    relatedPostSlugs: ["how-uk-tax-bands-work-2026-27", "salary-after-tax-per-month"],
+    sections: [
+      {
+        paragraphs: [
+          "A quick-reference summary of the main UK tax rates, bands, and allowances for the 2026/27 tax year (6 April 2026 to 5 April 2027). For the reasoning behind how these fit together, see our guide to how UK tax bands work; this page is just the numbers.",
+        ],
+      },
+      {
+        heading: "Income Tax: England, Wales and Northern Ireland",
+        table: {
+          headers: ["Band", "Income range", "Rate"],
+          rows: [
+            ["Personal Allowance", "Up to £12,570", "0%"],
+            ["Basic rate", "£12,571 to £50,270", "20%"],
+            ["Higher rate", "£50,271 to £125,140", "40%"],
+            ["Additional rate", "Over £125,140", "45%"],
+          ],
+        },
+      },
+      {
+        heading: "Income Tax: Scotland",
+        table: {
+          headers: ["Band", "Income range", "Rate"],
+          rows: [
+            ["Personal Allowance", "Up to £12,570", "0%"],
+            ["Starter rate", "£12,571 to £16,537", "19%"],
+            ["Basic rate", "£16,538 to £29,526", "20%"],
+            ["Intermediate rate", "£29,527 to £43,662", "21%"],
+            ["Higher rate", "£43,663 to £75,000", "42%"],
+            ["Advanced rate", "£75,001 to £125,140", "45%"],
+            ["Top rate", "Over £125,140", "48%"],
+          ],
+        },
+      },
+      {
+        paragraphs: [
+          "The Scottish bands only apply to non-savings, non-dividend income (salary, pensions, self-employment profit). Savings interest and dividends use the UK-wide rates below even for Scottish taxpayers.",
+        ],
+      },
+      {
+        heading: "Personal Allowance taper",
+        paragraphs: [
+          "Above £100,000 of adjusted net income, the £12,570 Personal Allowance shrinks by £1 for every £2 earned, reaching zero at £125,140. This applies the same way across the whole UK.",
+        ],
+      },
+      {
+        heading: "National Insurance: Class 1 (employees)",
+        table: {
+          headers: ["Earnings", "Rate"],
+          rows: [
+            ["Up to £12,570", "0%"],
+            ["£12,571 to £50,270", "8%"],
+            ["Over £50,270", "2%"],
+          ],
+        },
+      },
+      {
+        heading: "Dividend tax",
+        table: {
+          headers: ["Band", "Rate"],
+          rows: [
+            ["Dividend allowance", "0% on the first £500"],
+            ["Basic rate", "10.75%"],
+            ["Higher rate", "35.75%"],
+            ["Additional rate", "39.35%"],
+          ],
+        },
+      },
+      {
+        heading: "Capital Gains Tax",
+        table: {
+          headers: ["Band", "Rate"],
+          rows: [
+            ["Annual Exempt Amount", "0% on the first £3,000 of gains"],
+            ["Basic rate band", "18%"],
+            ["Above the basic rate band", "24%"],
+          ],
+        },
+        paragraphs: [
+          "These are the main rates for most individuals. Business Asset Disposal Relief can give an 18% rate on qualifying business gains, and trustees and personal representatives generally pay 24% regardless of income.",
+        ],
+      },
+      {
+        heading: "Self-employed National Insurance: Class 4",
+        table: {
+          headers: ["Profit", "Rate"],
+          rows: [
+            ["Up to £12,570", "0%"],
+            ["£12,571 to £50,270", "6%"],
+            ["Over £50,270", "2%"],
+          ],
+        },
+        paragraphs: [
+          "The £1,000 trading allowance can also cover small amounts of self-employment income tax-free instead of itemising expenses.",
+        ],
+      },
+      {
+        heading: "Student loan repayment thresholds",
+        table: {
+          headers: ["Plan", "Threshold", "Rate"],
+          rows: [
+            ["Plan 1", "£26,900", "9%"],
+            ["Plan 2", "£29,385", "9%"],
+            ["Plan 4", "£33,795", "9%"],
+            ["Plan 5", "£25,000", "9%"],
+            ["Postgraduate", "£21,000", "6%"],
+          ],
+        },
+      },
+      {
+        heading: "Marriage Allowance",
+        paragraphs: [
+          "A lower earner can transfer £1,260 of their unused Personal Allowance to a basic rate taxpayer spouse or civil partner, worth up to £252 a year.",
+        ],
+      },
+      {
+        paragraphs: [
+          "These figures are for the 2026/27 tax year. For a full breakdown of your own numbers, try our Salary Calculator, Income Tax Calculator, or any of our other calculators.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "When does the 2026/27 tax year run?",
+        answer: "From 6 April 2026 to 5 April 2027.",
+      },
+      {
+        question: "Are these rates the same across the whole UK?",
+        answer:
+          "Most are. Income Tax bands differ in Scotland for non-savings, non-dividend income. National Insurance, dividend tax, Capital Gains Tax, and student loan thresholds are the same across England, Wales, Scotland, and Northern Ireland.",
+      },
+      {
+        question: "Where do these figures come from?",
+        answer:
+          "HMRC's published rates and thresholds for the 2026/27 tax year. We update this page whenever HMRC publishes new figures.",
+      },
+      {
+        question: "Why is my tax code not using these bands directly?",
+        answer:
+          "Your tax code can reflect adjustments specific to you, such as a Marriage Allowance transfer, a second job, or unpaid tax from a previous year. See our guide to UK tax codes for what the different codes mean.",
+      },
+    ],
+  },
+  {
+    slug: "self-employed-allowable-expenses-uk",
+    title: "Self-employed allowable expenses: what you can (and can't) claim",
+    description:
+      "A complete guide to allowable expenses for UK sole traders: office costs, mileage rates, use of home, what's excluded, and how much tax claiming them actually saves.",
+    date: "2026-08-24",
+    relatedCalculatorSlugs: ["self-employed-tax-calculator", "income-tax-calculator", "national-insurance-calculator"],
+    relatedPostSlugs: ["self-employed-tax-explained"],
+    sections: [
+      {
+        paragraphs: [
+          "If you're a sole trader, allowable expenses reduce the profit you pay Income Tax and National Insurance on. They're not a direct refund: claiming £500 of allowable expenses doesn't put £500 back in your pocket, it reduces your taxable profit by £500, saving you tax at whatever your marginal rate happens to be.",
+        ],
+      },
+      {
+        heading: "How much do allowable expenses actually save you?",
+        paragraphs: [
+          "If your profit is below £50,270, your marginal rate is likely 26%: 20% Income Tax plus 6% Class 4 National Insurance (Scottish rates differ slightly for the Income Tax portion). At that rate, £500 of allowable expenses saves you £130 in tax, not £500. Above £50,270, the combined marginal rate rises to 42% (40% Income Tax plus 2% Class 4 National Insurance), so the same £500 saves £210. Either way, it's real money, just not pound-for-pound.",
+        ],
+      },
+      {
+        heading: "Common allowable expenses",
+        list: [
+          "Office costs: stationery, phone and internet bills (business proportion), software subscriptions",
+          "Travel: fuel, parking, train and bus fares for business journeys, though not your regular commute to a single permanent workplace",
+          "Stock and materials used to make what you sell",
+          "Staff costs, including salaries and subcontractor payments",
+          "Marketing and website costs",
+          "Professional fees: accountancy, business insurance, bank charges and interest on business loans",
+          "Training that updates skills you already use in your existing business, though not training for a new trade or qualification",
+        ],
+      },
+      {
+        heading: "Mileage: the simplified method",
+        paragraphs: [
+          "Instead of tracking actual vehicle running costs, most sole traders use HMRC's simplified mileage rates: 55p a mile for the first 10,000 business miles each tax year in a car or van, 25p a mile after that, 24p a mile for motorcycles, and 20p a mile for bicycles.",
+          "Once you choose the mileage method for a particular vehicle, you need to stick with it for as long as you use that vehicle in the business. You can't claim mileage and separately claim fuel, servicing, or capital allowances on the same vehicle.",
+        ],
+      },
+      {
+        heading: "Working from home",
+        paragraphs: [
+          "If you work from home, you can use HMRC's simplified flat rate instead of working out actual costs: £10 a month for 25 to 50 business hours, £18 a month for 51 to 100 hours, and £26 a month for 101 or more hours. If your actual additional costs (a proportion of heating, electricity, and similar bills) are higher, you can claim those instead, working out the business proportion on a reasonable basis, such as by room count or hours used.",
+        ],
+      },
+      {
+        heading: "What you can't claim",
+        list: [
+          "Client entertaining, meals, or gifts",
+          "Fines and penalties, including parking tickets",
+          "Everyday clothing, even if you only wear it for work; only genuine uniforms or protective clothing count",
+          "Personal expenses with no business purpose",
+          "The upfront cost of equipment or vehicles as a simple expense; these are usually claimed through capital allowances instead, most equipment qualifying for the Annual Investment Allowance, currently up to £1,000,000 of qualifying spending a year",
+        ],
+      },
+      {
+        paragraphs: [
+          "If your self-employment income is small, the £1,000 trading allowance can be simpler than itemising expenses at all. It's an alternative to claiming actual expenses, not something you add on top, so it's worth comparing which gives you the better result. See our guide to self-employed tax for how the trading allowance works.",
+        ],
+      },
+      {
+        heading: "Keeping records",
+        paragraphs: [
+          "Keep receipts and records for at least 5 years after the 31 January Self Assessment deadline for the relevant tax year. If you're within Making Tax Digital for Income Tax, you'll also need to keep digital records throughout the year rather than gathering everything at the end. See our guide to self-employed tax for who that currently applies to.",
+        ],
+      },
+      {
+        paragraphs: [
+          "Our Self-Employed Tax Calculator works out Income Tax and National Insurance on your profit figure, so subtract your allowable expenses from turnover first to get the number to enter.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What's the difference between allowable expenses and the trading allowance?",
+        answer:
+          "Allowable expenses are your actual, itemised business costs deducted from turnover. The £1,000 trading allowance is a flat deduction you can use instead, without needing to itemise anything. You claim one or the other, not both.",
+      },
+      {
+        question: "Can I claim for clothes I wear to work?",
+        answer:
+          "Only genuine uniforms, branded workwear, or protective clothing. Everyday clothing doesn't qualify, even if you only wear it for work.",
+      },
+      {
+        question: "Do I need receipts for every expense?",
+        answer:
+          "You need to be able to show HMRC evidence of what you spent if asked, so keeping receipts (digital photos are fine) is the safest approach, especially for larger purchases.",
+      },
+      {
+        question: "Can I claim mileage and fuel costs on the same vehicle?",
+        answer:
+          "No. Once you choose the simplified mileage rate for a vehicle, you use that instead of claiming fuel, servicing, insurance, or capital allowances separately for it.",
+      },
+      {
+        question: "Does claiming more expenses always save me money?",
+        answer:
+          "Only if the expense is genuinely allowable and business-related. Claiming £500 of allowable expenses saves you tax at your marginal rate (commonly 26% or 42%), not the full £500, so it reduces your bill rather than refunding the cost.",
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
