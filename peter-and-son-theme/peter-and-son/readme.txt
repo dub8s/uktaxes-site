@@ -9,15 +9,13 @@ Claude Design mock-up as a normal WordPress theme (no React, no page builder).
 3. Visit the site: the landing page is the home page straight away
    (front-page.php is used whatever "Your homepage displays" is set to).
 
-== Add your photos and logos ==
-Appearance → Customize → Peter and Son → Photos. Each slot (hero, the three
-steps, Peter's portrait, the Savoy photo, five gallery photos, header
-wordmark, watermark, trust badges, footer monogram) shows a dark placeholder
-until you pick an image.
+== Photos and logos ==
+The original photos and logos from the Claude Design project are bundled in
+assets/img/, so the page looks complete as soon as the theme is activated.
 
-Alternative: copy the original files from the Claude Design project into
-assets/img/ with their original names (cut-ribeye.jpg, peter.jpg,
-wordmark-gold.png, trust-badges.png ...). See inc/customizer.php for the list.
+To swap any of them: Appearance → Customize → Peter and Son → Photos. An image
+chosen there replaces the bundled one; clear it to go back to the bundled file.
+You can also overwrite a file in assets/img/ with one of the same name.
 
 == Contact details ==
 Appearance → Customize → Peter and Son → Contact details: phones, email,

@@ -94,7 +94,11 @@ function ps_image( $key, $alt, $attr = array(), $placeholder = true ) {
 
 	$file = isset( $slots[ $key ] ) ? $slots[ $key ]['file'] : '';
 	if ( $file && file_exists( get_template_directory() . '/assets/img/' . $file ) ) {
+		$size        = getimagesize( get_template_directory() . '/assets/img/' . $file );
 		$attr['src'] = get_template_directory_uri() . '/assets/img/' . $file;
+		if ( $size ) {
+			$attr += array( 'width' => $size[0], 'height' => $size[1] );
+		}
 		$html        = '<img';
 		foreach ( $attr as $name => $value ) {
 			$html .= ' ' . $name . '="' . esc_attr( $value ) . '"';
