@@ -1,6 +1,9 @@
 <?php
 /**
- * Landing page. WordPress uses this for the home page automatically.
+ * Template Name: Landing page
+ *
+ * The one-page Peter and Son landing page. Assigned to the "Home" page, which
+ * is set as the site's homepage by Appearance → Set up pages.
  *
  * @package peter-and-son
  */
@@ -21,9 +24,11 @@ $ps_enquiry  = isset( $_GET['enquiry'] ) ? sanitize_key( $_GET['enquiry'] ) : ''
 <section class="hero" id="top">
 	<?php ps_image( 'watermark', '', array( 'class' => 'wm', 'loading' => 'eager' ), false ); ?>
 	<div class="hero-copy">
-		<p class="over on-dark"><?php esc_html_e( 'Family butchers · Waltham Cross', 'peter-and-son' ); ?></p>
-		<h1 class="ps-gold-text"><?php esc_html_e( 'PRIME CUTS, DELIVERED.', 'peter-and-son' ); ?></h1>
-		<p class="lede"><?php esc_html_e( 'Premium halal meat, cut by hand at our block and delivered fresh to kitchens across London. Trusted by top chefs for over twenty years.', 'peter-and-son' ); ?></p>
+		<h1>
+			<span class="over on-dark"><?php esc_html_e( 'Halal meat supplier to London kitchens', 'peter-and-son' ); ?></span>
+			<span class="h1-main ps-gold-text"><?php esc_html_e( 'PRIME CUTS, DELIVERED.', 'peter-and-son' ); ?></span>
+		</h1>
+		<p class="lede"><?php esc_html_e( 'Family halal butchers in Waltham Cross. We cut premium beef and lamb by hand and deliver it fresh to restaurants, hotels and caterers across London. Trusted by top chefs for over twenty years.', 'peter-and-son' ); ?></p>
 		<div class="ctas">
 			<a class="btn btn-gold btn-lg" href="#contact"><?php esc_html_e( 'Request a price list', 'peter-and-son' ); ?><?php echo ps_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 			<?php if ( $ps_mobile ) : ?>

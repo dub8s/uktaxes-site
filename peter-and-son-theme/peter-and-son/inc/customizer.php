@@ -21,6 +21,13 @@ function ps_defaults() {
 		'maps_url'     => 'https://www.google.com/maps/search/?api=1&query=Peter+%26+Son+Meat+Deliveries+Unit+A2C+East+Lee+Road+Trading+Estate+Waltham+Cross+EN9+1AS',
 		'rating'       => '5.0',
 		'review_count' => '17',
+		// Company details from Companies House (company 14727788).
+		'legal_name'        => 'Peter & Son Meat Deliveries Ltd',
+		'company_number'    => '14727788',
+		'registered_in'     => 'England and Wales',
+		'registered_office' => 'F04 1st Floor, Knightrider House, Knightrider Street, Maidstone, Kent, ME15 6LU',
+		'vat_number'        => '',
+		'ico_number'        => '',
 	);
 }
 
@@ -82,6 +89,31 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp_customize 
 			'label'   => $field[0],
 			'type'    => $field[1],
 			'section' => 'ps_contact',
+		) );
+	}
+
+	$wp_customize->add_section( 'ps_legal', array(
+		'title'       => __( 'Company & legal details', 'peter-and-son' ),
+		'panel'       => 'ps_panel',
+		'description' => __( 'Shown in the footer and on the Privacy Policy, Cookie Policy and Terms pages. UK law requires a limited company to show its registered name, number, place of registration and registered office on its website. Leave VAT or ICO number blank if you do not have one and it is simply left out.', 'peter-and-son' ),
+	) );
+	$legal = array(
+		'legal_name'        => __( 'Registered company name', 'peter-and-son' ),
+		'company_number'    => __( 'Company number', 'peter-and-son' ),
+		'registered_in'     => __( 'Registered in', 'peter-and-son' ),
+		'registered_office' => __( 'Registered office address', 'peter-and-son' ),
+		'vat_number'        => __( 'VAT number (if VAT registered)', 'peter-and-son' ),
+		'ico_number'        => __( 'ICO registration number', 'peter-and-son' ),
+	);
+	foreach ( $legal as $key => $label ) {
+		$wp_customize->add_setting( 'ps_' . $key, array(
+			'default'           => $defaults[ $key ],
+			'sanitize_callback' => 'sanitize_text_field',
+		) );
+		$wp_customize->add_control( 'ps_' . $key, array(
+			'label'   => $label,
+			'type'    => 'text',
+			'section' => 'ps_legal',
 		) );
 	}
 

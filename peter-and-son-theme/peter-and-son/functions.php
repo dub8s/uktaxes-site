@@ -7,11 +7,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PS_VERSION', '1.0.0' );
+define( 'PS_VERSION', '1.1.0' );
 
 require get_template_directory() . '/inc/icons.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/enquiries.php';
+require get_template_directory() . '/inc/seo.php';
+require get_template_directory() . '/inc/legal.php';
+require get_template_directory() . '/inc/setup.php';
 
 add_action( 'after_setup_theme', function () {
 	load_theme_textdomain( 'peter-and-son', get_template_directory() . '/languages' );
@@ -27,7 +30,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script( 'peter-and-son', get_template_directory_uri() . '/assets/js/main.js', array(), PS_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 	// The landing page is hand-built, so it needs none of the block editor's styles.
-	if ( is_front_page() ) {
+	if ( ps_is_landing() ) {
 		wp_dequeue_style( 'wp-block-library' );
 		wp_dequeue_style( 'classic-theme-styles' );
 		wp_dequeue_style( 'global-styles' );
@@ -50,6 +53,19 @@ add_action( 'wp_head', function () {
 
 add_filter( 'document_title_separator', function () {
 	return '—';
+} );
+
+/** Whether the current view is the landing page. */
+function ps_is_landing() {
+	return is_page_template( 'templates/landing.php' ) || ( is_front_page() && is_home() );
+}
+
+// Until a Home page is set up, show the landing page instead of a blog list.
+add_filter( 'template_include', function ( $template ) {
+	if ( is_front_page() && is_home() ) {
+		return get_template_directory() . '/templates/landing.php';
+	}
+	return $template;
 } );
 
 /**

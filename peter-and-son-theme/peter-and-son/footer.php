@@ -47,8 +47,11 @@ $ps_insta  = ps_opt( 'instagram' );
 				},
 			) );
 			?>
-			<span><?php echo esc_html( trim( ps_opt( 'address_1' ) . ', ' . ps_opt( 'address_2' ), ', ' ) ); ?></span>
+			<span><?php echo esc_html( ps_trading_address() ); ?></span>
 		</div>
+		<?php if ( ps_company_statement() ) : ?>
+			<p class="company"><?php echo esc_html( ps_company_statement() ); ?></p>
+		<?php endif; ?>
 	</div>
 </footer>
 <?php wp_footer(); ?>

@@ -1,7 +1,7 @@
 <?php
 /**
  * Fallback template for pages and posts (privacy policy, blog, etc.).
- * The landing page itself is front-page.php.
+ * The landing page itself is templates/landing.php.
  *
  * @package peter-and-son
  */
