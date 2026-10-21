@@ -51,8 +51,8 @@ add_action( 'wp_head', function () {
 	$id    = (int) get_theme_mod( 'ps_img_hero' );
 	if ( $id && wp_attachment_is_image( $id ) ) {
 		$image = wp_get_attachment_image_url( $id, 'large' );
-	} elseif ( file_exists( get_template_directory() . '/assets/img/cut-ribeye.jpg' ) ) {
-		$image = get_template_directory_uri() . '/assets/img/cut-ribeye.jpg';
+	} elseif ( file_exists( get_template_directory() . '/assets/img/' . ps_image_slots()['hero']['file'] ) ) {
+		$image = get_template_directory_uri() . '/assets/img/' . ps_image_slots()['hero']['file'];
 	}
 
 	if ( '' !== $seo['description'] ) {

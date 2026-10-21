@@ -20,6 +20,7 @@ function ps_defaults() {
 		'maps_url'     => 'https://www.google.com/maps/search/?api=1&query=Peter+%26+Son+Meat+Deliveries+Unit+A2C+East+Lee+Road+Trading+Estate+Waltham+Cross+EN9+1AS',
 		'rating'       => '5.0',
 		'review_count' => '17',
+		'hero_style'   => 'photo',
 		// Company details from Companies House (company 14727788).
 		'legal_name'        => 'Peter & Son Meat Deliveries Ltd',
 		'company_number'    => '14727788',
@@ -35,18 +36,21 @@ function ps_defaults() {
  * a file with that name into assets/img/ also works without the Customizer.
  */
 function ps_image_slots() {
+	// With the photo header, the van-loading photo moves up to the header, so
+	// step 2 and the gallery shuffle along to avoid showing a photo twice.
+	$photo_hero = 'none' !== ps_opt( 'hero_style' );
 	return array(
 		'logo'      => array( 'label' => __( 'Header wordmark (gold)', 'peter-and-son' ), 'file' => 'wordmark-gold.png' ),
 		'watermark' => array( 'label' => __( 'Hero bull watermark', 'peter-and-son' ), 'file' => 'bull-watermark.png' ),
-		'hero'      => array( 'label' => __( 'Hero photo (ribeye on the block)', 'peter-and-son' ), 'file' => 'cut-ribeye.jpg' ),
+		'hero'      => array( 'label' => __( 'Header photo (loading the van)', 'peter-and-son' ), 'file' => 'loading.jpg' ),
 		'badges'    => array( 'label' => __( 'Trust badges strip', 'peter-and-son' ), 'file' => 'trust-badges.png' ),
 		'step1'     => array( 'label' => __( 'Step 1 – Cut to your spec', 'peter-and-son' ), 'file' => 'cut-dry-aged.jpg' ),
-		'step2'     => array( 'label' => __( 'Step 2 – Packed cold', 'peter-and-son' ), 'file' => 'loading.jpg' ),
+		'step2'     => array( 'label' => __( 'Step 2 – Packed cold', 'peter-and-son' ), 'file' => $photo_hero ? 'beef-box.jpg' : 'loading.jpg' ),
 		'step3'     => array( 'label' => __( 'Step 3 – At your door', 'peter-and-son' ), 'file' => 'smithfield.jpg' ),
 		'peter'     => array( 'label' => __( 'Portrait of Peter', 'peter-and-son' ), 'file' => 'peter.jpg' ),
 		'savoy'     => array( 'label' => __( 'Vans at The Savoy', 'peter-and-son' ), 'file' => 'savoy-wide.jpg' ),
 		'gallery1'  => array( 'label' => __( 'Gallery – the team (large)', 'peter-and-son' ), 'file' => 'team.jpg' ),
-		'gallery2'  => array( 'label' => __( 'Gallery – beef box', 'peter-and-son' ), 'file' => 'beef-box.jpg' ),
+		'gallery2'  => array( 'label' => __( 'Gallery – small photo 1', 'peter-and-son' ), 'file' => $photo_hero ? 'cut-ribeye.jpg' : 'beef-box.jpg' ),
 		'gallery3'  => array( 'label' => __( 'Gallery – unit sign and van', 'peter-and-son' ), 'file' => 'sign-van.jpg' ),
 		'gallery4'  => array( 'label' => __( 'Gallery – ribeye on the block', 'peter-and-son' ), 'file' => 'cut-ribeye-2.jpg' ),
 		'gallery5'  => array( 'label' => __( 'Gallery – side of the van', 'peter-and-son' ), 'file' => 'van-side.jpg' ),
@@ -89,6 +93,26 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp_customize 
 			'section' => 'ps_contact',
 		) );
 	}
+
+	$wp_customize->add_section( 'ps_header', array(
+		'title' => __( 'Header', 'peter-and-son' ),
+		'panel' => 'ps_panel',
+	) );
+	$wp_customize->add_setting( 'ps_hero_style', array(
+		'default'           => $defaults['hero_style'],
+		'sanitize_callback' => function ( $value ) {
+			return in_array( $value, array( 'photo', 'none' ), true ) ? $value : 'photo';
+		},
+	) );
+	$wp_customize->add_control( 'ps_hero_style', array(
+		'label'   => __( 'Header style', 'peter-and-son' ),
+		'type'    => 'radio',
+		'section' => 'ps_header',
+		'choices' => array(
+			'photo' => __( 'Photo on the right, fading into the background', 'peter-and-son' ),
+			'none'  => __( 'No photo: text and logo watermark only', 'peter-and-son' ),
+		),
+	) );
 
 	$wp_customize->add_section( 'ps_legal', array(
 		'title'       => __( 'Company & legal details', 'peter-and-son' ),

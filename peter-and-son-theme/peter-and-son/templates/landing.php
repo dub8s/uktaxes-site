@@ -17,10 +17,11 @@ $ps_insta    = ps_opt( 'instagram' );
 $ps_maps     = ps_opt( 'maps_url' );
 $ps_rating   = ps_opt( 'rating' );
 $ps_reviews  = ps_opt( 'review_count' );
+$ps_plain    = 'none' === ps_opt( 'hero_style' );
 ?>
 <main id="main">
 
-<section class="hero" id="top">
+<section class="hero<?php echo $ps_plain ? ' hero--plain' : ''; ?>" id="top">
 	<?php ps_image( 'watermark', '', array( 'class' => 'wm', 'loading' => 'eager' ), false ); ?>
 	<div class="hero-copy">
 		<h1>
@@ -41,9 +42,11 @@ $ps_reviews  = ps_opt( 'review_count' );
 			<span><b><?php echo esc_html( $ps_rating ); ?></b> <?php echo esc_html( sprintf( /* translators: %s: number of reviews */ __( 'from %s Google reviews', 'peter-and-son' ), $ps_reviews ) ); ?></span>
 		</a></div>
 	</div>
-	<figure class="hero-img">
-		<?php ps_image( 'hero', __( 'Ribeye being cut by hand on a wooden block', 'peter-and-son' ), array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
-	</figure>
+	<?php if ( ! $ps_plain ) : ?>
+		<figure class="hero-img">
+			<?php ps_image( 'hero', __( 'The Peter and Son team loading an order into a refrigerated van', 'peter-and-son' ), array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
+		</figure>
+	<?php endif; ?>
 </section>
 
 <section class="sec" id="how">
@@ -59,7 +62,7 @@ $ps_reviews  = ps_opt( 'review_count' );
 			<?php
 			$ps_steps = array(
 				array( 'step1', __( 'Cut to your spec', 'peter-and-son' ), __( 'Every order is prepared by hand at our unit — the cut, the trim and the weight you ask for.', 'peter-and-son' ), __( 'Bone-in sirloin on the block', 'peter-and-son' ) ),
-				array( 'step2', __( 'Packed cold', 'peter-and-son' ), __( 'Boxed and loaded straight into our refrigerated vans, so the cold chain never breaks.', 'peter-and-son' ), __( 'Loading the refrigerated van', 'peter-and-son' ) ),
+				array( 'step2', __( 'Packed cold', 'peter-and-son' ), __( 'Boxed and loaded straight into our refrigerated vans, so the cold chain never breaks.', 'peter-and-son' ), $ps_plain ? __( 'Loading the refrigerated van', 'peter-and-son' ) : __( 'Unboxing a case of grass-fed beef', 'peter-and-son' ) ),
 				array( 'step3', __( 'At your door by morning', 'peter-and-son' ), __( 'Drops start at 4am across London, so the meat is in your fridge before prep begins.', 'peter-and-son' ), __( 'Two Peter and Son vans in central London', 'peter-and-son' ) ),
 			);
 			foreach ( $ps_steps as $ps_i => $ps_step ) :
@@ -160,7 +163,7 @@ $ps_reviews  = ps_opt( 'review_count' );
 		<h2 class="h2"><?php echo wp_kses( __( 'The people behind<br>every delivery', 'peter-and-son' ), array( 'br' => array() ) ); ?></h2>
 		<div class="gal">
 			<figure class="big"><?php ps_image( 'gallery1', __( 'Peter and the Peter and Son team', 'peter-and-son' ) ); ?><figcaption class="cap"><?php esc_html_e( 'The team · Waltham Cross', 'peter-and-son' ); ?></figcaption></figure>
-			<figure><?php ps_image( 'gallery2', __( 'Unboxing a case of grass-fed beef', 'peter-and-son' ) ); ?></figure>
+			<figure><?php ps_image( 'gallery2', $ps_plain ? __( 'Unboxing a case of grass-fed beef', 'peter-and-son' ) : __( 'Ribeye being cut by hand on a wooden block', 'peter-and-son' ) ); ?></figure>
 			<figure><?php ps_image( 'gallery3', __( 'Peter and Son unit sign and van', 'peter-and-son' ) ); ?></figure>
 			<figure><?php ps_image( 'gallery4', __( 'Ribeye on the block', 'peter-and-son' ) ); ?></figure>
 			<figure><?php ps_image( 'gallery5', __( 'Side of a Peter and Son van', 'peter-and-son' ) ); ?></figure>
