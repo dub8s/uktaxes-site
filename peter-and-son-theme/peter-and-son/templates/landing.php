@@ -17,7 +17,6 @@ $ps_insta    = ps_opt( 'instagram' );
 $ps_maps     = ps_opt( 'maps_url' );
 $ps_rating   = ps_opt( 'rating' );
 $ps_reviews  = ps_opt( 'review_count' );
-$ps_enquiry  = isset( $_GET['enquiry'] ) ? sanitize_key( $_GET['enquiry'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display only.
 ?>
 <main id="main">
 
@@ -25,14 +24,16 @@ $ps_enquiry  = isset( $_GET['enquiry'] ) ? sanitize_key( $_GET['enquiry'] ) : ''
 	<?php ps_image( 'watermark', '', array( 'class' => 'wm', 'loading' => 'eager' ), false ); ?>
 	<div class="hero-copy">
 		<h1>
-			<span class="over on-dark"><?php esc_html_e( 'Halal meat supplier to London kitchens', 'peter-and-son' ); ?></span>
+			<span class="over on-dark"><?php esc_html_e( 'Meat supplier to London kitchens', 'peter-and-son' ); ?></span>
 			<span class="h1-main ps-gold-text"><?php esc_html_e( 'PRIME CUTS, DELIVERED.', 'peter-and-son' ); ?></span>
 		</h1>
-		<p class="lede"><?php esc_html_e( 'Family halal butchers in Waltham Cross. We cut premium beef and lamb by hand and deliver it fresh to restaurants, hotels and caterers across London. Trusted by top chefs for over twenty years.', 'peter-and-son' ); ?></p>
+		<p class="lede"><?php esc_html_e( 'Family butchers in Waltham Cross. We cut premium beef and lamb by hand and deliver it fresh to restaurants, hotels and caterers across London. Trusted by top chefs for over twenty years.', 'peter-and-son' ); ?></p>
 		<div class="ctas">
-			<a class="btn btn-gold btn-lg" href="#contact"><?php esc_html_e( 'Request a price list', 'peter-and-son' ); ?><?php echo ps_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
-			<?php if ( $ps_mobile ) : ?>
-				<a class="btn btn-on-dark btn-lg" href="<?php echo esc_attr( ps_tel( $ps_mobile ) ); ?>"><?php echo ps_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $ps_mobile ); ?></a>
+			<?php if ( $ps_phone ) : ?>
+				<a class="btn btn-gold btn-lg" href="<?php echo esc_attr( ps_tel( $ps_phone ) ); ?>"><?php echo ps_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( sprintf( /* translators: %s: phone number */ __( 'Call %s', 'peter-and-son' ), $ps_phone ) ); ?></a>
+			<?php endif; ?>
+			<?php if ( $ps_email ) : ?>
+				<a class="btn btn-on-dark btn-lg" href="<?php echo esc_url( 'mailto:' . $ps_email . '?subject=' . rawurlencode( __( 'Price list request', 'peter-and-son' ) ) ); ?>"><?php echo ps_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php esc_html_e( 'Email us', 'peter-and-son' ); ?></a>
 			<?php endif; ?>
 		</div>
 		<div class="rating"><a href="#reviews">
@@ -44,8 +45,6 @@ $ps_enquiry  = isset( $_GET['enquiry'] ) ? sanitize_key( $_GET['enquiry'] ) : ''
 		<?php ps_image( 'hero', __( 'Ribeye being cut by hand on a wooden block', 'peter-and-son' ), array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
 	</figure>
 </section>
-
-<section class="badges"><div class="wrap"><?php ps_badges(); ?></div></section>
 
 <section class="sec" id="how">
 	<div class="wrap">
@@ -87,7 +86,7 @@ $ps_enquiry  = isset( $_GET['enquiry'] ) ? sanitize_key( $_GET['enquiry'] ) : ''
 				<div><b><?php esc_html_e( 'Peter', 'peter-and-son' ); ?></b><span><?php esc_html_e( 'Owner, Peter and Son', 'peter-and-son' ); ?></span></div>
 			</div>
 			<div class="facts">
-				<?php foreach ( array( __( 'Halal certified', 'peter-and-son' ), __( 'HACCP certified', 'peter-and-son' ), __( 'Family business', 'peter-and-son' ), __( 'Custom orders', 'peter-and-son' ) ) as $ps_fact ) : ?>
+				<?php foreach ( array( __( 'Family business', 'peter-and-son' ), __( 'Custom orders', 'peter-and-son' ), __( 'HACCP certified', 'peter-and-son' ), __( 'Halal certified', 'peter-and-son' ) ) as $ps_fact ) : ?>
 					<span class="ps-tag"><?php echo esc_html( $ps_fact ); ?></span>
 				<?php endforeach; ?>
 			</div>
@@ -174,14 +173,8 @@ $ps_enquiry  = isset( $_GET['enquiry'] ) ? sanitize_key( $_GET['enquiry'] ) : ''
 		<div>
 			<p class="over"><?php esc_html_e( 'Custom orders', 'peter-and-son' ); ?></p>
 			<h2 class="h2"><?php esc_html_e( 'Tell us what you need', 'peter-and-son' ); ?></h2>
-			<p class="lede"><?php esc_html_e( 'Tailored orders for restaurants, hotels and caterers. Send us your list and we’ll come back with a price.', 'peter-and-son' ); ?></p>
+			<p class="lede"><?php esc_html_e( 'Tailored orders for restaurants, hotels and caterers. Call or email us with your list and we’ll come back with a price.', 'peter-and-son' ); ?></p>
 			<div class="info">
-				<div><h4><?php esc_html_e( 'Call or email', 'peter-and-son' ); ?></h4><div class="lines">
-					<?php if ( $ps_phone ) : ?><a class="line" href="<?php echo esc_attr( ps_tel( $ps_phone ) ); ?>"><?php echo ps_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span class="mono"><?php echo esc_html( $ps_phone ); ?></span></a><?php endif; ?>
-					<?php if ( $ps_mobile ) : ?><a class="line" href="<?php echo esc_attr( ps_tel( $ps_mobile ) ); ?>"><?php echo ps_icon( 'smartphone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span class="mono"><?php echo esc_html( $ps_mobile ); ?></span></a><?php endif; ?>
-					<?php if ( $ps_email ) : ?><a class="line" href="<?php echo esc_url( 'mailto:' . $ps_email ); ?>"><?php echo ps_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $ps_email ); ?></a><?php endif; ?>
-					<?php if ( $ps_insta ) : ?><a class="line" href="<?php echo esc_url( 'https://instagram.com/' . $ps_insta ); ?>" target="_blank" rel="noopener"><?php echo ps_icon( 'instagram' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>@<?php echo esc_html( $ps_insta ); ?></a><?php endif; ?>
-				</div></div>
 				<div><h4><?php esc_html_e( 'Find us', 'peter-and-son' ); ?></h4>
 					<p class="addr"><?php echo esc_html( ps_opt( 'address_1' ) ); ?><br><?php echo esc_html( ps_opt( 'address_2' ) ); ?></p>
 					<?php if ( $ps_maps ) : ?>
@@ -209,45 +202,35 @@ $ps_enquiry  = isset( $_GET['enquiry'] ) ? sanitize_key( $_GET['enquiry'] ) : ''
 			</div>
 		</div>
 
-		<form class="form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-			<input type="hidden" name="action" value="ps_enquiry">
-			<input type="hidden" name="ps_ts" value="<?php echo esc_attr( time() ); ?>">
-			<div class="hp-field" aria-hidden="true"><label>Website <input type="text" name="ps_website" tabindex="-1" autocomplete="off"></label></div>
-			<h3><?php esc_html_e( 'Request a price list', 'peter-and-son' ); ?></h3>
-			<p class="sub"><?php esc_html_e( 'We reply within one working day.', 'peter-and-son' ); ?></p>
-			<div class="fgrid">
-				<label class="field"><span class="field-label"><?php esc_html_e( 'Your name', 'peter-and-son' ); ?></span><span class="field-box"><input type="text" name="ps_name" placeholder="<?php esc_attr_e( 'Full name', 'peter-and-son' ); ?>" autocomplete="name" required></span></label>
-				<label class="field"><span class="field-label"><?php esc_html_e( 'Business', 'peter-and-son' ); ?></span><span class="field-box"><input type="text" name="ps_business" placeholder="<?php esc_attr_e( 'Restaurant or hotel name', 'peter-and-son' ); ?>" autocomplete="organization"></span></label>
-				<label class="field"><span class="field-label"><?php esc_html_e( 'Email', 'peter-and-son' ); ?></span><span class="field-box"><?php echo ps_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><input type="email" name="ps_email" placeholder="you@kitchen.co.uk" autocomplete="email" required></span></label>
-				<label class="field"><span class="field-label"><?php esc_html_e( 'Phone', 'peter-and-son' ); ?></span><span class="field-box"><?php echo ps_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><input type="tel" name="ps_phone" placeholder="020 0000 0000" autocomplete="tel"></span></label>
-				<label class="field full"><span class="field-label"><?php esc_html_e( 'Type of kitchen', 'peter-and-son' ); ?></span><span class="field-box"><select name="ps_kitchen">
-					<?php foreach ( ps_kitchen_types() as $ps_type ) : ?>
-						<option><?php echo esc_html( $ps_type ); ?></option>
-					<?php endforeach; ?>
-				</select><span class="chev"><?php echo ps_icon( 'chevron-down' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span></span></label>
-				<label class="field full"><span class="field-label"><?php esc_html_e( 'What do you need?', 'peter-and-son' ); ?></span><span class="field-box"><input type="text" name="ps_needs" placeholder="<?php esc_attr_e( 'e.g. 10 kg ribeye, lamb racks, weekly order', 'peter-and-son' ); ?>"></span></label>
-				<div class="full"><button class="btn btn-primary btn-lg btn-block" type="submit"><?php esc_html_e( 'Send enquiry', 'peter-and-son' ); ?><?php echo ps_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></button></div>
-			</div>
-		</form>
-	</div>
-
-	<?php if ( 'sent' === $ps_enquiry || 'error' === $ps_enquiry ) : ?>
-		<div class="toast<?php echo 'error' === $ps_enquiry ? ' is-error' : ''; ?>" data-ps-toast>
-			<div class="toast-inner" role="status">
-				<?php echo ps_icon( 'error' === $ps_enquiry ? 'alert-circle' : 'circle-check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				<div style="flex:1;min-width:0">
-					<?php if ( 'sent' === $ps_enquiry ) : ?>
-						<div class="toast-title"><?php esc_html_e( 'Enquiry sent', 'peter-and-son' ); ?></div>
-						<div class="toast-msg"><?php esc_html_e( 'Thanks — we’ll be in touch within one working day.', 'peter-and-son' ); ?></div>
-					<?php else : ?>
-						<div class="toast-title"><?php esc_html_e( 'Something went wrong', 'peter-and-son' ); ?></div>
-						<div class="toast-msg"><?php esc_html_e( 'Please check your name and email and try again, or give us a call.', 'peter-and-son' ); ?></div>
-					<?php endif; ?>
-				</div>
-				<button class="toast-close" type="button" aria-label="<?php esc_attr_e( 'Dismiss', 'peter-and-son' ); ?>" data-ps-toast-close><?php echo ps_icon( 'x' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></button>
-			</div>
+		<div class="callcard">
+			<h3><?php esc_html_e( 'Get a price list', 'peter-and-son' ); ?></h3>
+			<p class="sub"><?php esc_html_e( 'Call the team, or email us your list and we’ll come back with a price.', 'peter-and-son' ); ?></p>
+			<?php if ( $ps_phone ) : ?>
+				<a class="callrow callrow-main" href="<?php echo esc_attr( ps_tel( $ps_phone ) ); ?>">
+					<?php echo ps_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span><small><?php esc_html_e( 'Call us', 'peter-and-son' ); ?></small><b class="mono"><?php echo esc_html( $ps_phone ); ?></b></span>
+				</a>
+			<?php endif; ?>
+			<?php if ( $ps_mobile ) : ?>
+				<a class="callrow" href="<?php echo esc_attr( ps_tel( $ps_mobile ) ); ?>">
+					<?php echo ps_icon( 'smartphone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span><small><?php esc_html_e( 'Mobile', 'peter-and-son' ); ?></small><b class="mono"><?php echo esc_html( $ps_mobile ); ?></b></span>
+				</a>
+			<?php endif; ?>
+			<?php if ( $ps_email ) : ?>
+				<a class="callrow" href="<?php echo esc_url( 'mailto:' . $ps_email . '?subject=' . rawurlencode( __( 'Price list request', 'peter-and-son' ) ) ); ?>">
+					<?php echo ps_icon( 'mail' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span><small><?php esc_html_e( 'Email', 'peter-and-son' ); ?></small><b><?php echo esc_html( $ps_email ); ?></b></span>
+				</a>
+			<?php endif; ?>
+			<?php if ( $ps_insta ) : ?>
+				<a class="callrow" href="<?php echo esc_url( 'https://instagram.com/' . $ps_insta ); ?>" target="_blank" rel="noopener">
+					<?php echo ps_icon( 'instagram' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span><small><?php esc_html_e( 'Instagram', 'peter-and-son' ); ?></small><b>@<?php echo esc_html( $ps_insta ); ?></b></span>
+				</a>
+			<?php endif; ?>
 		</div>
-	<?php endif; ?>
+	</div>
 </section>
 
 </main>

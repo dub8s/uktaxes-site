@@ -7,11 +7,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PS_VERSION', '1.1.0' );
+define( 'PS_VERSION', '1.2.0' );
 
 require get_template_directory() . '/inc/icons.php';
 require get_template_directory() . '/inc/customizer.php';
-require get_template_directory() . '/inc/enquiries.php';
 require get_template_directory() . '/inc/seo.php';
 require get_template_directory() . '/inc/legal.php';
 require get_template_directory() . '/inc/setup.php';
@@ -27,7 +26,6 @@ add_action( 'after_setup_theme', function () {
 
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'peter-and-son', get_stylesheet_uri(), array(), PS_VERSION );
-	wp_enqueue_script( 'peter-and-son', get_template_directory_uri() . '/assets/js/main.js', array(), PS_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 	// The landing page is hand-built, so it needs none of the block editor's styles.
 	if ( ps_is_landing() ) {

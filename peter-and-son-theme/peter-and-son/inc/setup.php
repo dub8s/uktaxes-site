@@ -17,8 +17,8 @@ function ps_setup_page_defs() {
 			'title'    => __( 'Home', 'peter-and-son' ),
 			'template' => 'templates/landing.php',
 			'seo'      => array(
-				'title'       => 'Halal Meat Supplier to London Restaurants & Hotels | Peter and Son',
-				'description' => 'Family-run halal butchers in Waltham Cross, supplying London restaurants, hotels and caterers. Cut to order, delivered from 4am. Request a price list.',
+				'title'       => 'Meat Supplier to London Restaurants & Hotels | Peter and Son',
+				'description' => 'Family butchers in Waltham Cross supplying premium meat to London restaurants, hotels and caterers. Cut to order, delivered from 4am. Call for a price list.',
 			),
 		),
 		'privacy-policy' => array(
@@ -180,4 +180,45 @@ add_action( 'admin_notices', function () {
 		esc_url( $url ),
 		esc_html__( 'Set up pages', 'peter-and-son' )
 	);
+} );
+
+/**
+ * Bring pages created by an earlier version up to date. Only text and SEO
+ * settings that are still exactly as the theme wrote them are changed, so
+ * anything edited by hand is left alone.
+ */
+add_action( 'admin_init', function () {
+	$done = get_option( 'ps_setup_done' );
+	if ( ! $done || version_compare( $done, PS_VERSION, '>=' ) ) {
+		return;
+	}
+
+	if ( version_compare( $done, '1.2.0', '<' ) ) {
+		// 1.2.0: the enquiry form was removed and the halal wording toned down.
+		$home = (int) get_option( 'page_on_front' );
+		if ( $home && get_post_meta( $home, '_ps_managed', true ) ) {
+			$seo = ps_setup_page_defs()['home']['seo'];
+			if ( 'Halal Meat Supplier to London Restaurants & Hotels | Peter and Son' === get_post_meta( $home, '_ps_seo_title', true ) ) {
+				update_post_meta( $home, '_ps_seo_title', $seo['title'] );
+			}
+			if ( 0 === strpos( get_post_meta( $home, '_ps_seo_description', true ), 'Family-run halal butchers in Waltham Cross' ) ) {
+				update_post_meta( $home, '_ps_seo_description', $seo['description'] );
+			}
+		}
+		$replacements = array(
+			'<li><strong>Enquiries.</strong> When you use the "Request a price list" form we collect your name, business name, email address, phone number, the type of kitchen you run and what you need. We also collect whatever you tell us when you phone, email or message us on Instagram.</li>' => '<li><strong>Enquiries.</strong> When you phone, email or message us on Instagram, we collect your name, business name, contact details and whatever you tell us about what you need.</li>',
+			'<tr><td>Keep the website secure and prevent spam and misuse of the enquiry form</td>' => '<tr><td>Keep the website secure and working</td>',
+			'enquiries are stored in a password-protected system that only our team can access,' => 'the information we hold is kept in password-protected systems,',
+			', introducing viruses, or sending spam or false enquiries through the contact form.' => ' or introducing viruses.',
+		);
+		$pages = get_posts( array( 'post_type' => 'page', 'post_status' => 'any', 'numberposts' => -1, 'meta_key' => '_ps_managed', 'meta_value' => 1 ) ); // phpcs:ignore WordPress.DB.SlowDBQuery -- runs once.
+		foreach ( $pages as $page ) {
+			$content = str_replace( array_keys( $replacements ), array_values( $replacements ), $page->post_content );
+			if ( $content !== $page->post_content ) {
+				wp_update_post( array( 'ID' => $page->ID, 'post_content' => $content ) );
+			}
+		}
+	}
+
+	update_option( 'ps_setup_done', PS_VERSION );
 } );
