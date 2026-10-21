@@ -39,18 +39,12 @@ You can also overwrite a file in assets/img/ with one of the same name.
 == Contact details ==
 Appearance → Customize → Peter and Son → Contact details: phones, email,
 Instagram, address, Google Maps link, rating and review count, announcement
-bar text, and the address enquiries are emailed to.
+and the announcement bar text.
 
 == Contact ==
 There is no contact form: the page leads with the phone number and email
 (Call button in the hero, a "Get a price list" card in the contact section).
 The numbers and email come from Customize → Peter and Son → Contact details.
-
-==
-Every "Request a price list" submission is saved under Enquiries in the
-admin menu AND emailed. Many hosts can't send email from a fresh WordPress
-install; if the emails don't arrive, install an SMTP plugin (e.g. WP Mail
-SMTP). Enquiries are still saved in the admin either way.
 
 == Editing the text ==
 Headings, reviews and opening hours live in templates/landing.php. The legal pages
