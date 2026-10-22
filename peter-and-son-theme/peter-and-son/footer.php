@@ -19,7 +19,7 @@ $ps_insta  = ps_opt( 'instagram' );
 					printf( '<img class="monogram" src="%s" alt="%s" width="72" height="72" loading="lazy">', esc_url( get_template_directory_uri() . '/assets/img/favicon.png' ), esc_attr__( 'Peter and Son', 'peter-and-son' ) );
 				}
 				?>
-				<p><?php esc_html_e( 'Family butchers. Premium meat, cut by hand and delivered fresh across London.', 'peter-and-son' ); ?></p>
+				<p><?php esc_html_e( 'Family halal butchers. Premium halal meat, cut by hand and delivered fresh across London.', 'peter-and-son' ); ?></p>
 			</div>
 			<div class="col">
 				<h4><?php esc_html_e( 'Contact', 'peter-and-son' ); ?></h4>

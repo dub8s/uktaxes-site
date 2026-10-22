@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PS_VERSION', '1.3.0' );
+define( 'PS_VERSION', '1.4.0' );
 
 require get_template_directory() . '/inc/icons.php';
 require get_template_directory() . '/inc/customizer.php';

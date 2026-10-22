@@ -17,8 +17,8 @@ function ps_setup_page_defs() {
 			'title'    => __( 'Home', 'peter-and-son' ),
 			'template' => 'templates/landing.php',
 			'seo'      => array(
-				'title'       => 'Meat Supplier to London Restaurants & Hotels | Peter and Son',
-				'description' => 'Family butchers in Waltham Cross supplying premium meat to London restaurants, hotels and caterers. Cut to order, delivered from 4am. Call for a price list.',
+				'title'       => 'Halal Meat Supplier to London Restaurants | Peter and Son',
+				'description' => 'Family halal butchers supplying premium halal beef and lamb to London restaurants, hotels and caterers. Cut to order, delivered from 4am. Call for prices.',
 			),
 		),
 		'privacy-policy' => array(
@@ -197,13 +197,6 @@ add_action( 'admin_init', function () {
 		// 1.2.0: the enquiry form was removed and the halal wording toned down.
 		$home = (int) get_option( 'page_on_front' );
 		if ( $home && get_post_meta( $home, '_ps_managed', true ) ) {
-			$seo = ps_setup_page_defs()['home']['seo'];
-			if ( 'Halal Meat Supplier to London Restaurants & Hotels | Peter and Son' === get_post_meta( $home, '_ps_seo_title', true ) ) {
-				update_post_meta( $home, '_ps_seo_title', $seo['title'] );
-			}
-			if ( 0 === strpos( get_post_meta( $home, '_ps_seo_description', true ), 'Family-run halal butchers in Waltham Cross' ) ) {
-				update_post_meta( $home, '_ps_seo_description', $seo['description'] );
-			}
 		}
 		$replacements = array(
 			'<li><strong>Enquiries.</strong> When you use the "Request a price list" form we collect your name, business name, email address, phone number, the type of kitchen you run and what you need. We also collect whatever you tell us when you phone, email or message us on Instagram.</li>' => '<li><strong>Enquiries.</strong> When you phone, email or message us on Instagram, we collect your name, business name, contact details and whatever you tell us about what you need.</li>',
@@ -217,6 +210,27 @@ add_action( 'admin_init', function () {
 			if ( $content !== $page->post_content ) {
 				wp_update_post( array( 'ID' => $page->ID, 'post_content' => $content ) );
 			}
+		}
+	}
+
+	// Home page SEO: replace any earlier default title and description that
+	// hasn't been edited (1.4.0 puts halal back at the front).
+	$home = (int) get_option( 'page_on_front' );
+	if ( $home && get_post_meta( $home, '_ps_managed', true ) ) {
+		$seo        = ps_setup_page_defs()['home']['seo'];
+		$old_titles = array(
+			'Halal Meat Supplier to London Restaurants & Hotels | Peter and Son',
+			'Meat Supplier to London Restaurants & Hotels | Peter and Son',
+		);
+		$old_descs  = array(
+			'Family-run halal butchers in Waltham Cross, supplying London restaurants, hotels and caterers. Cut to order, delivered from 4am. Request a price list.',
+			'Family butchers in Waltham Cross supplying premium meat to London restaurants, hotels and caterers. Cut to order, delivered from 4am. Call for a price list.',
+		);
+		if ( in_array( get_post_meta( $home, '_ps_seo_title', true ), $old_titles, true ) ) {
+			update_post_meta( $home, '_ps_seo_title', $seo['title'] );
+		}
+		if ( in_array( get_post_meta( $home, '_ps_seo_description', true ), $old_descs, true ) ) {
+			update_post_meta( $home, '_ps_seo_description', $seo['description'] );
 		}
 	}
 

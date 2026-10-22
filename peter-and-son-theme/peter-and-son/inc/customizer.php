@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 /** Default contact details, taken from the design. */
 function ps_defaults() {
 	return array(
-		'announcement' => 'Serving kitchens across London · First drops from 4am',
+		'announcement' => 'Halal-certified meat for London kitchens · First drops from 4am',
 		'phone'        => '020 3370 2200',
 		'mobile'       => '07449 315 690',
 		'email'        => 'info@peterandson.co.uk',

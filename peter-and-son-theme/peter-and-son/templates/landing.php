@@ -25,10 +25,10 @@ $ps_plain    = 'none' === ps_opt( 'hero_style' );
 	<?php ps_image( 'watermark', '', array( 'class' => 'wm', 'loading' => 'eager' ), false ); ?>
 	<div class="hero-copy">
 		<h1>
-			<span class="over on-dark"><?php esc_html_e( 'Meat supplier to London kitchens', 'peter-and-son' ); ?></span>
+			<span class="over on-dark"><?php esc_html_e( 'Halal meat supplier to London kitchens', 'peter-and-son' ); ?></span>
 			<span class="h1-main ps-gold-text"><?php esc_html_e( 'PRIME CUTS, DELIVERED.', 'peter-and-son' ); ?></span>
 		</h1>
-		<p class="lede"><?php esc_html_e( 'Family butchers in Waltham Cross. We cut premium beef and lamb by hand and deliver it fresh to restaurants, hotels and caterers across London. Trusted by top chefs for over twenty years.', 'peter-and-son' ); ?></p>
+		<p class="lede"><?php esc_html_e( 'Family halal butchers in Waltham Cross. We cut premium halal beef and lamb by hand and deliver it fresh to restaurants, hotels and caterers across London. Trusted by top chefs for over twenty years.', 'peter-and-son' ); ?></p>
 		<div class="ctas">
 			<?php if ( $ps_phone ) : ?>
 				<a class="btn btn-gold btn-lg" href="<?php echo esc_attr( ps_tel( $ps_phone ) ); ?>"><?php echo ps_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( sprintf( /* translators: %s: phone number */ __( 'Call %s', 'peter-and-son' ), $ps_phone ) ); ?></a>
@@ -44,7 +44,7 @@ $ps_plain    = 'none' === ps_opt( 'hero_style' );
 	</div>
 	<?php if ( ! $ps_plain ) : ?>
 		<figure class="hero-img">
-			<?php ps_image( 'hero', __( 'The Peter and Son team loading an order into a refrigerated van', 'peter-and-son' ), array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
+			<?php ps_image( 'hero', __( 'The Peter and Son team loading a halal meat order into a refrigerated van', 'peter-and-son' ), array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
 		</figure>
 	<?php endif; ?>
 </section>
@@ -61,7 +61,7 @@ $ps_plain    = 'none' === ps_opt( 'hero_style' );
 		<div class="steps">
 			<?php
 			$ps_steps = array(
-				array( 'step1', __( 'Cut to your spec', 'peter-and-son' ), __( 'Every order is prepared by hand at our unit — the cut, the trim and the weight you ask for.', 'peter-and-son' ), __( 'Bone-in sirloin on the block', 'peter-and-son' ) ),
+				array( 'step1', __( 'Cut to your spec', 'peter-and-son' ), __( 'Every halal order is prepared by hand at our unit — the cut, the trim and the weight you ask for.', 'peter-and-son' ), __( 'Bone-in sirloin on the block', 'peter-and-son' ) ),
 				array( 'step2', __( 'Packed cold', 'peter-and-son' ), __( 'Boxed and loaded straight into our refrigerated vans, so the cold chain never breaks.', 'peter-and-son' ), $ps_plain ? __( 'Loading the refrigerated van', 'peter-and-son' ) : __( 'Unboxing a case of grass-fed beef', 'peter-and-son' ) ),
 				array( 'step3', __( 'At your door by morning', 'peter-and-son' ), __( 'Drops start at 4am across London, so the meat is in your fridge before prep begins.', 'peter-and-son' ), __( 'Two Peter and Son vans in central London', 'peter-and-son' ) ),
 			);
@@ -89,7 +89,7 @@ $ps_plain    = 'none' === ps_opt( 'hero_style' );
 				<div><b><?php esc_html_e( 'Peter', 'peter-and-son' ); ?></b><span><?php esc_html_e( 'Owner, Peter and Son', 'peter-and-son' ); ?></span></div>
 			</div>
 			<div class="facts">
-				<?php foreach ( array( __( 'Family business', 'peter-and-son' ), __( 'Custom orders', 'peter-and-son' ), __( 'HACCP certified', 'peter-and-son' ), __( 'Halal certified', 'peter-and-son' ) ) as $ps_fact ) : ?>
+				<?php foreach ( array( __( 'Halal certified', 'peter-and-son' ), __( 'HACCP certified', 'peter-and-son' ), __( 'Family business', 'peter-and-son' ), __( 'Custom orders', 'peter-and-son' ) ) as $ps_fact ) : ?>
 					<span class="ps-tag"><?php echo esc_html( $ps_fact ); ?></span>
 				<?php endforeach; ?>
 			</div>
@@ -106,7 +106,7 @@ $ps_plain    = 'none' === ps_opt( 'hero_style' );
 		<div>
 			<p class="over"><?php esc_html_e( 'Trusted by top chefs', 'peter-and-son' ); ?></p>
 			<h2 class="h2"><?php esc_html_e( 'Supplying London’s finest kitchens', 'peter-and-son' ); ?></h2>
-			<p class="lede"><?php esc_html_e( 'From landmark hotels to neighbourhood restaurants, chefs rely on us for consistent quality and deliveries that arrive when we say they will.', 'peter-and-son' ); ?></p>
+			<p class="lede"><?php esc_html_e( 'From landmark hotels to neighbourhood restaurants, chefs rely on us for consistent, halal-certified quality and deliveries that arrive when we say they will.', 'peter-and-son' ); ?></p>
 			<div class="stats">
 				<div><strong class="ps-gold-text">20+</strong><span><?php esc_html_e( 'Years in the trade', 'peter-and-son' ); ?></span></div>
 				<div><strong class="ps-gold-text"><?php echo esc_html( $ps_rating ); ?></strong><span><?php esc_html_e( 'Google rating', 'peter-and-son' ); ?></span></div>
